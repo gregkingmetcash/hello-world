@@ -79,6 +79,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"p_pipeline": {
+				"type": "string",
+				"defaultValue": "whodat"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2020-12-16T23:12:30Z"
 	},
