@@ -1,0 +1,328 @@
+{
+	"name": "p_HANA_AZURE_EDL_HANA_FCT_DIRECTS_ALLOCATION",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [ARCHIVE].[ARC_HANA_FCT_DIRECTS_ALLOCATION]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "CUSTOMER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERNAL_SALES_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERNAL_SALES_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CATEGORY_MANAGER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CATEGORY_MANAGER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CATEGORY_MANAGER_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CATEGORY_MANAGER_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SEGMENT_GENERAL_MANAGER_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SEGMENT_GENERAL_MANAGER_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SEGMENT_HEAD_OF_MERCHANDISE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SEGMENT_HEAD_OF_MERCHANDISE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GENERAL_MANAGER_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GENERAL_MANAGER_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HEAD_OF_MERCHANDISE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HEAD_OF_MERCHANDISE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FRESH_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FRESH_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TOBACCO_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TOBACCO_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROPRIETARY_BREAD_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROPRIETARY_BREAD_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROMOTION_PRICE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROMOTION_PRICE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CHARGE_THROUGH_SALES_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CHARGE_THROUGH_SALES_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CHARGE_THROUGH_COGS_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CHARGE_THROUGH_COGS_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIVATE_LABEL_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIVATE_LABEL_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIVATE_LABEL_PDM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIVATE_LABEL_PDM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIVATE_LABEL_GM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIVATE_LABEL_GM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MANAGER_TYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MANAGER_TYP",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_FCT_DIRECTS_ALLOCATION",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDL_HANA_FCT_DIRECTS_ALLOCATION",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_FCT_FULL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

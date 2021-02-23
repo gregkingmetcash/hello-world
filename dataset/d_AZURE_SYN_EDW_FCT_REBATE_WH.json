@@ -1,0 +1,179 @@
+{
+	"name": "d_AZURE_SYN_EDW_FCT_REBATE_WH",
+	"properties": {
+		"description": "WH Rebate Facts",
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "REQUEST_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DATAPAK_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CATEGORY_MANAGER",
+				"type": "char"
+			},
+			{
+				"name": "INCOME_TYPE",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_SOURCE",
+				"type": "char"
+			},
+			{
+				"name": "RECORD_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FISCAL_DATE",
+				"type": "char"
+			},
+			{
+				"name": "UNIT",
+				"type": "char"
+			},
+			{
+				"name": "CURRENCY",
+				"type": "char"
+			},
+			{
+				"name": "DIVISION_CODE",
+				"type": "char"
+			},
+			{
+				"name": "DEPARTMENT_CODE",
+				"type": "char"
+			},
+			{
+				"name": "CALENDER_DAY",
+				"type": "char"
+			},
+			{
+				"name": "BRANCH_CODE",
+				"type": "char"
+			},
+			{
+				"name": "STATE_CODE",
+				"type": "char"
+			},
+			{
+				"name": "ITEM_EXCLUSION",
+				"type": "char"
+			},
+			{
+				"name": "SUPPLIER_CODE",
+				"type": "char"
+			},
+			{
+				"name": "SA_CODE",
+				"type": "char"
+			},
+			{
+				"name": "SA_NAME",
+				"type": "char"
+			},
+			{
+				"name": "PRODUCT_CODE",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_NUMBER",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_CODE",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_RATE",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "REBATE_FLAG",
+				"type": "char"
+			},
+			{
+				"name": "EXT_CATCH_WEIGHT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "CASES_QTY",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "PURCHASE_VALUE",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "REBATE_AMOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "REBATE_GST_AMOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "EXTENDED_TOTAL_AMOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "CLAIM_NUMBER",
+				"type": "char"
+			},
+			{
+				"name": "GENERIC_FLAG",
+				"type": "char"
+			},
+			{
+				"name": "ITEM_TYPE",
+				"type": "char"
+			},
+			{
+				"name": "CLASS_CODE",
+				"type": "char"
+			},
+			{
+				"name": "SOURCE_FILE",
+				"type": "char"
+			},
+			{
+				"name": "UPDATE_DATE",
+				"type": "char"
+			}
+		],
+		"typeProperties": {
+			"schema": "EDW",
+			"table": "FCT_REBATE_WH"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

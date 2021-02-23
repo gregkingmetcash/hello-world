@@ -1,0 +1,1168 @@
+{
+	"name": "p_HANA_AZURE_STG_HANA_DIM_DATE",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data_DIM_DATE",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [STG].[STG_HANA_DIM_DATE]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_DAY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_DAY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_DAY_ABBR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_DAY_ABBR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_WK_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GREG_WK_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_WK_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_WK_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_WK_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_WK_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_MTH_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GREG_MTH_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_MTH_WK_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GREG_MTH_WK_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_MTH_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GREG_MTH_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_MONTH_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_MONTH_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_MTH_ABBR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_MTH_ABBR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_MTH_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_MTH_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_MTH_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_MTH_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_QTR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GREG_QTR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_QTR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_QTR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_QTR_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_QTR_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_QTR_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_QTR_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_YEAR_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GREG_YEAR_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_YEAR_WK_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GREG_YEAR_WK_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_YEAR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GREG_YEAR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_YEAR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_YEAR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_YEAR_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_YEAR_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_YEAR_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "GREG_YEAR_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_MLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_MLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_QLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_QLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GREG_YLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GREG_YLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_DAY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_DAY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_DAY_ABBR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_DAY_ABBR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_WK_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROM_WK_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_WK_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_WK_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_WK_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_WK_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_MTH_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROM_MTH_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_MTH_WK_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROM_MTH_WK_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_MTH_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROM_MTH_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_MONTH_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_MONTH_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_MTH_ABBR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_MTH_ABBR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_MTH_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_MTH_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_MTH_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_MTH_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_QTR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROM_QTR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_QTR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_QTR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_QTR_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_QTR_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_QTR_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_QTR_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_YEAR_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROM_YEAR_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_YEAR_WK_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROM_YEAR_WK_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_YEAR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PROM_YEAR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_YEAR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_YEAR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_YEAR_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_YEAR_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_YEAR_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROM_YEAR_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_MLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_MLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_QLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_QLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROM_YLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROM_YLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_DAY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_DAY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_DAY_ABBR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_DAY_ABBR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_WK_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FISC_WK_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_WK_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_WK_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_WK_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_WK_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_MTH_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FISC_MTH_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_MTH_WK_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FISC_MTH_WK_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_MTH_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FISC_MTH_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_MONTH_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_MONTH_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_MTH_ABBR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_MTH_ABBR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_MTH_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_MTH_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_MTH_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_MTH_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_QTR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FISC_QTR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_QTR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_QTR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_QTR_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_QTR_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_QTR_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_QTR_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_YEAR_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FISC_YEAR_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_YEAR_WK_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FISC_YEAR_WK_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_YEAR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FISC_YEAR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_YEAR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_YEAR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_YEAR_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_YEAR_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_YEAR_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FISC_YEAR_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_MLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_MLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_QLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_QLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_YLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISC_YLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATFIN_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_DAY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATFIN_DAY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_DAY_ABBR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATFIN_DAY_ABBR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_WK_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "NATFIN_WK_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_WK_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATFIN_WK_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_WK_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATFIN_WK_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_MTH_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "NATFIN_MTH_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_MTH_WK_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "NATFIN_MTH_WK_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_MTH_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "NATFIN_MTH_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_MONTH_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATFIN_MONTH_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_MTH_ABBR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATFIN_MTH_ABBR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATF_MTH_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATF_MTH_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_MTH_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATFIN_MTH_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_QTR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "NATFIN_QTR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_QTR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATFIN_QTR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATF_QTR_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATF_QTR_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_QTR_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATFIN_QTR_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATF_YEAR_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "NATF_YEAR_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_YEAR_WK_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "NATFIN_YEAR_WK_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_YEAR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "NATFIN_YEAR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_YEAR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATFIN_YEAR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATF_YEAR_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATF_YEAR_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATFIN_YEAR_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "NATFIN_YEAR_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "NATF_MLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATF_MLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATF_QLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATF_QLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATF_YLST_DAY_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "NATF_YLST_DAY_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DAYLIGHT_SAV_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DAYLIGHT_SAV_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_DIM_DATE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_STG_HANA_DIM_DATE",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_DIM_FULL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

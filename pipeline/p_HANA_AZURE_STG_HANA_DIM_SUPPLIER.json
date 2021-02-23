@@ -1,0 +1,938 @@
+{
+	"name": "p_HANA_AZURE_STG_HANA_DIM_SUPPLIER",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [STG].[STG_HANA_DIM_SUPPLIER]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPP_STAT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPP_STAT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERNAL_SUPP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERNAL_SUPP_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTR_WH_SUPP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTR_WH_SUPP_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AAW_SUPP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AAW_SUPP_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAIN_ADDRESS_LINE_1_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAIN_ADDRESS_LINE_1_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAIN_ADDRESS_SUBURB_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAIN_ADDRESS_SUBURB_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAIN_ADDRESS_POST_CODE_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAIN_ADDRESS_POST_CODE_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORD_PHONE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORD_PHONE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FAX_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FAX_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALTERNATE_ADDRESS_LINE_1_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALTERNATE_ADDRESS_LINE_1_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALTERNATE_ADDRESS_SUBURB_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALTERNATE_ADDRESS_SUBURB_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALTERNATE_ADDRESS_POST_CD_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALTERNATE_ADDRESS_POST_CD_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PARENT_COMP_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PARENT_COMP_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WS_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WS_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RET_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RET_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPP_GRADE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPP_GRADE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPP_TYPE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPP_TYPE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DS_METH_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DS_METH_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELETE_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DELETE_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_MAIN_ADDRESS_LINE_1_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_MAIN_ADDRESS_LINE_1_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_MAIN_ADDRESS_SUBURB_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_MAIN_ADDRESS_SUBURB_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_MAIN_ADDRESS_POST_CODE_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_MAIN_ADDRESS_POST_CODE_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_SUPP_STAT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_SUPP_STAT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_AUTO_MKT_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_AUTO_MKT_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_FAX_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_FAX_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_ABN_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_ABN_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_TFR_BRCH_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SA_TFR_BRCH_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_ACCT_PHONE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_ACCT_PHONE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_CREATE_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SA_CREATE_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_DELETE_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SA_DELETE_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "EFF_START_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "EFF_START_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "EFF_END_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "EFF_END_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "MAIN_ADDRESS_LINE_2_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAIN_ADDRESS_LINE_2_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAIN_ADDRESS_STATE_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAIN_ADDRESS_STATE_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAIN_ADDRESS_COUNTRY_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAIN_ADDRESS_COUNTRY_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALTERNATE_ADDRESS_LINE_2_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALTERNATE_ADDRESS_LINE_2_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALTERNATE_ADDRESS_COUNTRY_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALTERNATE_ADDRESS_COUNTRY_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALTERNATE_ADDRESS_STATE_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALTERNATE_ADDRESS_STATE_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_MAIN_ADDRESS_LINE_2_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_MAIN_ADDRESS_LINE_2_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_MAIN_ADDRESS_COUNTRY_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_MAIN_ADDRESS_COUNTRY_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_MAIN_ADDRESS_STATE_TXT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_MAIN_ADDRESS_STATE_TXT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_STATUS_EFFECTIVE_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SUPPLIER_STATUS_EFFECTIVE_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_CONVERSION_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CONVERSION_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MEGA_SUPPLIER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MEGA_SUPPLIER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPER_SUPPLIER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPER_SUPPLIER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_SUPPLIED_COMPETITOR_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DATA_SUPPLIED_COMPETITOR_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATA_SUPPLIED_OWN_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DATA_SUPPLIED_OWN_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPER_VENDOR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPER_VENDOR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPER_VENDOR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPER_VENDOR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MN_COMP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MN_COMP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MN_COMP_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MN_COMP_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY_FORMAL_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY_FORMAL_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMP_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMP_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EDI_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EDI_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EDI_OPTN_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EDI_OPTN_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OUTBND_PO_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OUTBND_PO_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_FUNC_ACK_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_FUNC_ACK_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INBND_PO_ACK_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INBND_PO_ACK_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADV_SHP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADV_SHP_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INBND_INV_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INBND_INV_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ETRADE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ETRADE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXPR_RCPT_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EXPR_RCPT_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "UPSERT_FLAG",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UPSERT_FLAG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTIVE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ACTIVE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ROYAL_SUPP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ROYAL_SUPP_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CDS_SUP_REG_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CDS_SUP_REG_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUYER_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUYER_NUM",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_DIM_SUPPLIER",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_STG_HANA_DIM_SUPPLIER",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_DIM_FULL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

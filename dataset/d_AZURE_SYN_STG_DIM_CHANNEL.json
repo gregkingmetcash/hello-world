@@ -1,0 +1,99 @@
+{
+	"name": "d_AZURE_SYN_STG_DIM_CHANNEL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "CHANNEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CHANNEL_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CHAIN_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MAP_INFO_STYLE",
+				"type": "varchar"
+			},
+			{
+				"name": "CHANNEL_REF_NUM",
+				"type": "decimal",
+				"precision": 1,
+				"scale": 0
+			},
+			{
+				"name": "CHANNEL_REF_STORE_COUNT",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CHANNEL_REPORT_GRP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "METCASH_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "UPDATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "date"
+			},
+			{
+				"name": "UPDATED_DT",
+				"type": "date"
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "UPDATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "IRI_IND",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "DIM_CHANNEL"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

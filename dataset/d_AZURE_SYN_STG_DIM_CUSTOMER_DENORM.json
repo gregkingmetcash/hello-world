@@ -1,0 +1,336 @@
+{
+	"name": "d_AZURE_SYN_STG_DIM_CUSTOMER_DENORM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "CUSTOMER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CUSTOMER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_ID",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "RECENT_STORE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "ADMINISTRATION_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "EXCEPTION_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "MSO_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MSO_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "PRODUCT_RANGE_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "PROGRAM_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "REBATE_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "RETAIL_SMTRS",
+				"type": "decimal",
+				"precision": 17,
+				"scale": 5
+			},
+			{
+				"name": "STORE_CHANNEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_STATUS_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "VILLAGE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "VILLAGE_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_SMTRS",
+				"type": "decimal",
+				"precision": 17,
+				"scale": 5
+			},
+			{
+				"name": "REFERENCE_BASKET",
+				"type": "varchar"
+			},
+			{
+				"name": "MSO",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_CHANNEL",
+				"type": "varchar"
+			},
+			{
+				"name": "BUS_PILLAR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BAN_GRP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_LINE_1_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_LINE_2_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_SUBURB_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_POST_CODE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_STATE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_LINE_1_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_LINE_2_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_SUBURB_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_POST_CODE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_STATE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "LIQ_LIC_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_REPRESENTATIVE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "NATIONAL_BANNER_GROUP",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_REP_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_REPRESENTATIVE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "BAN_GRP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "CURRENT_CDS_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "HISTORY_CDS_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CDS_INCLUDE_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "QLD_CDS_INCLUDE_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "PE_MSO_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MSO_DESC",
+				"type": "varchar"
+			},
+			{
+				"name": "FIRST_ORD_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_ORD_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TRADE_MODEL_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "DSA_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "DSA_ACTIVATION_STATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "DSA_PROGRAM_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "DSA_START_DATE_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "DSA_START_YR_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "WL4L_FY",
+				"type": "varchar"
+			},
+			{
+				"name": "RL4L_FY",
+				"type": "varchar"
+			},
+			{
+				"name": "CLOSED_FY",
+				"type": "varchar"
+			},
+			{
+				"name": "OPEN_FY",
+				"type": "varchar"
+			},
+			{
+				"name": "W_INTERMITTENT_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "WL4L_MAT",
+				"type": "varchar"
+			},
+			{
+				"name": "RL4L_MAT",
+				"type": "varchar"
+			},
+			{
+				"name": "CHAN_G3",
+				"type": "varchar"
+			},
+			{
+				"name": "CHAN_G2",
+				"type": "varchar"
+			},
+			{
+				"name": "CHAN_G1",
+				"type": "varchar"
+			},
+			{
+				"name": "AREA_MGR_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "REGION",
+				"type": "varchar"
+			},
+			{
+				"name": "COMPETITION_FY_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "COMPETITION_FY_START_DATE_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "COMPETITION_FY_GROUP",
+				"type": "varchar"
+			},
+			{
+				"name": "REF_BASKET",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_GROUPING_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_CLASS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_CLASS_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "INTERNAL_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_INT_BRANCH",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_CHANNEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_CHANNEL_NM",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_DIM_CUSTOMER_DENORM"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

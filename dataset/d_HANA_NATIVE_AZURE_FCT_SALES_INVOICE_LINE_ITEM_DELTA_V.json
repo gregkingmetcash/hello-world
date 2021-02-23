@@ -1,0 +1,20 @@
+{
+	"name": "d_HANA_NATIVE_AZURE_FCT_SALES_INVOICE_LINE_ITEM_DELTA_V",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_HANA_NATIVE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "HANA"
+		},
+		"annotations": [],
+		"type": "SapHanaTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "EIM_EDM",
+			"table": "AZURE_FCT_SALES_INVOICE_LINE_ITEM_DELTA_V"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

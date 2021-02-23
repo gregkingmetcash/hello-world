@@ -1,0 +1,19 @@
+{
+	"name": "d_HANA_ODBC_DIM_CUSTOMER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_HANA_ODBC_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "HANA_ODBC"
+		},
+		"annotations": [],
+		"type": "OdbcTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "\"EIM_EDM\".\"DIM_CUSTOMER\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

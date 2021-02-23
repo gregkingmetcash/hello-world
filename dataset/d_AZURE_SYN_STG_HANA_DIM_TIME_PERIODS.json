@@ -1,0 +1,136 @@
+{
+	"name": "d_AZURE_SYN_STG_HANA_DIM_TIME_PERIODS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "DATE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "GREG_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FISC_WK_END_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CALENDAR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TIME_PERIOD",
+				"type": "varchar"
+			},
+			{
+				"name": "CURRENT_TIME_PERIOD",
+				"type": "varchar"
+			},
+			{
+				"name": "CURRENT_ABBR_MONTH_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "CURRENT_YEAR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "GREG_MONTH_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FISC_DAY_ABBR_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "FISC_MONTH_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FISC_MONTH_ABBR_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "FISC_MONTH_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "FISC_MONTH_WEEK_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FISC_YEAR_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FISC_QTR_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "FISC_YEAR_WK_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FISCAL_PERIOD",
+				"type": "varchar"
+			},
+			{
+				"name": "LAST_WEEK_FLAG",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LAST_YEAR_FLG",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WEEK_END_DATE_PROMPT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "CURRENT_FISC_WK_END_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_DIM_TIME_PERIODS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

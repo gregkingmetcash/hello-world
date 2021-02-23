@@ -1,0 +1,58 @@
+{
+	"name": "AZURE_SYN_STG_STOREDATA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_EIM_FOOD_ANALYT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_FOOD_ANALYT"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "address_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "state",
+				"type": "nvarchar"
+			},
+			{
+				"name": "channel",
+				"type": "nvarchar"
+			},
+			{
+				"name": "store",
+				"type": "nvarchar"
+			},
+			{
+				"name": "mso",
+				"type": "nvarchar"
+			},
+			{
+				"name": "price_match_store",
+				"type": "nvarchar"
+			},
+			{
+				"name": "gp_approved_store",
+				"type": "nvarchar"
+			},
+			{
+				"name": "store_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "in_latest_rpr",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "STG_DIM_RETAIL_PROGRAM_STORES"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

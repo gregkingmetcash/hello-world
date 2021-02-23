@@ -1,0 +1,287 @@
+{
+	"name": "d_AZURE_SYN_STG_HANA_FCT_PURCHASE_ORDER_LINE_CURRENT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "BRANCH_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "DATE_ORDERED_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "DATE_PO_SENT_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "DATE_EXPECTED_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "DATE_EXPECTED_NEW_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "DATE_RECEIVED_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PO_APPOINTMENT_DATE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUPPLIER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "INTERNAL_SUPP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "PRODUCT_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "EMPLOYEE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUB_VENDOR_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "WAREHOUSE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_LINE_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PO_STATUS_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_STATUS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_FULFILLMENT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "UNITS_ORDERED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CASES_ORDERED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PRODUCT_PACK_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_EXT_WEIGHT_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_EXT_LITERAGE_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_COST_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_COST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_GST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_OFF_INVOICE_ALLOWANCE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_ORIGINAL_ORDERED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_ORIGINAL_COST_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_TRANSACTION_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_AGREED_LEAD_TIME",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BROKEN_CASE_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_EDI_CONFIRM_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_CONFIRM_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "POA_CONFIRM_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "ASN_CONFIRM_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "FUNCTIONAL_ACK_CONFIRM_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "INTER_BRANCH_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "INVOICE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "PROFORMA_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "PROFORMA_LINE_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ASN_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CASES_RECEIVED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNITS_RECEIVED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECEIVED_ITEM_WEIGHT_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECEIVED_EXT_WEIGHT_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PROFORMA_COST_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PROFORMA_COST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EXTRACT_DAY_NUM",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SOURCE_SYSTEM_CD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SOURCE_EXTRACT_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "FINAL_PO_LINE_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SOURCE_CREATE_DT",
+				"type": "bigint",
+				"precision": 19
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_FCT_PURCHASE_ORDER_LINE_CURRENT"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

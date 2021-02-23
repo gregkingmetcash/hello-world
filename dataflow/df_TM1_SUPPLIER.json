@@ -1,0 +1,32 @@
+{
+	"name": "df_TM1_SUPPLIER",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "d_AZURE_SYN_EXT_TM1_MANUAL_SUPPLIER",
+						"type": "DatasetReference"
+					},
+					"name": "TM1Supplier"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "d_AZURE_SYN_STG_SUPPLIER_TM1",
+						"type": "DatasetReference"
+					},
+					"name": "STGSuppplierTm1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DCdate"
+				}
+			],
+			"script": "source(output(\n\t\tSUPPLIER_CODE as string,\n\t\tSUPPLIER_NAME as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table',\n\tstaged: false) ~> TM1Supplier\nTM1Supplier derive(CREATED_DT = currentTimestamp(),\n\t\tCREATED_BY = \"DIM_SUPPLIER_MANUAL_TM1\",\n\t\tUPDATED_DT = currentTimestamp(),\n\t\tUPDATED_BY = \"DIM_SUPPLIER_MANUAL_TM1\") ~> DCdate\nDCdate sink(input(\n\t\tSUPPLIER_CODE as string,\n\t\tSUPPLIER_NAME as string,\n\t\tCREATED_DT as timestamp,\n\t\tCREATED_BY as string,\n\t\tUPDATED_DT as timestamp,\n\t\tUPDATED_BY as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tstaged: true,\n\tpreSQLs:['truncate table [STG].[STG_SUPPLIER_TM1]'],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> STGSuppplierTm1"
+		}
+	}
+}

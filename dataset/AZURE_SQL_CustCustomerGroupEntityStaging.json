@@ -1,0 +1,175 @@
+{
+	"name": "AZURE_SQL_CustCustomerGroupEntityStaging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_DYN365_BYOD_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_BYOD_SQL_DYNAMICS"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "LINETOTALDISCOUNTAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "LINETOTALTAXAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "PRODUCTNAME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DEFINITIONGROUP",
+				"type": "nvarchar"
+			},
+			{
+				"name": "EXECUTIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ISSELECTED",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "TRANSFERSTATUS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "INVOICEDQUANTITY",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "SALESPRICE",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "PRODUCTDESCRIPTION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICENUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVOICEDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CURRENCYCODE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SALESUNITSYMBOL",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CONFIRMEDSHIPPINGDATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "PRODUCTNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LINECREATIONSEQUENCENUMBER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LINETOTALCHARGEAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "LINEAMOUNT",
+				"type": "decimal",
+				"precision": 32,
+				"scale": 6
+			},
+			{
+				"name": "INVENTORYSITEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "INVENTORYWAREHOUSEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRODUCTSIZEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRODUCTCOLORID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRODUCTCONFIGURATIONID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PRODUCTSTYLEID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ITEMBATCHNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ORDEREDINVENTORYSTATUSID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DIMENSIONNUMBER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LEDGERVOUCHER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "PARTITION",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DATAAREAID",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SYNCSTARTDATETIME",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RECID",
+				"type": "bigint",
+				"precision": 19
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "CustCustomerGroupEntityStaging"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

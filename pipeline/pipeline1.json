@@ -1,0 +1,86 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"query": "select PRODUCT_CD,PRODUCT_DESC,sum(CASE LAST_YEAR_FLG WHEN 1 THEN NET_CASES_SOLD ELSE 0 END)  WJXBFS1 FROM \"_SYS_BIC\".\"EIM_EDM.WHOLESALE_SALES/DAILY_WHOLESALE_SALES_CV\"  \nwhere WEEK_END_DATE_PROMPT='2020-12-06' group by PRODUCT_CD,PRODUCT_DESC",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "product_cd"
+								},
+								"sink": {
+									"name": "product_cd",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "product_desc"
+								},
+								"sink": {
+									"name": "product_desc",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "WJXBFS1"
+								},
+								"sink": {
+									"name": "measure",
+									"type": "Single",
+									"physicalType": "float"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_NATIVE_DUMMY_TABLE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_azure_test",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,136 @@
+{
+	"name": "d_AZURE_SYN_EDL_HANA_FCT_DIRECTS_ALLOCATION",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "DATE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "BRANCH_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CUSTOMER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUPPLIER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PRODUCT_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "INTERNAL_SALES_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "CATEGORY_MANAGER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CATEGORY_MANAGER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SEGMENT_GENERAL_MANAGER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SEGMENT_HEAD_OF_MERCHANDISE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "GENERAL_MANAGER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "HEAD_OF_MERCHANDISE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "FRESH_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "TOBACCO_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "PROPRIETARY_BREAD_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "PROMOTION_PRICE_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CHARGE_THROUGH_SALES_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CHARGE_THROUGH_COGS_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "PRIVATE_LABEL_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "PRIVATE_LABEL_PDM",
+				"type": "varchar"
+			},
+			{
+				"name": "PRIVATE_LABEL_GM",
+				"type": "varchar"
+			},
+			{
+				"name": "MANAGER_TYP",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "EDL",
+			"table": "HANA_FCT_DIRECTS_ALLOCATION"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

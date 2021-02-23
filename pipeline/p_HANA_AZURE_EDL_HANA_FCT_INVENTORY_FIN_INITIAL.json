@@ -1,0 +1,1046 @@
+{
+	"name": "p_HANA_AZURE_EDL_HANA_FCT_INVENTORY_FIN_INITIAL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "EMPLOYEE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "EMPLOYEE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALM_WAREHOUSE_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALM_WAREHOUSE_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_WAREHOUSE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_WAREHOUSE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUB_VENDOR_CODE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SUB_VENDOR_CODE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "STOCK_CONTROLLER_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STOCK_CONTROLLER_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_STATUS_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_STATUS_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUSPEND_DELETE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUSPEND_DELETE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DELETION_DATE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DELETION_DATE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DISCONTINUED_DATE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DISCONTINUED_DATE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CATCH_WEIGHT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CATCH_WEIGHT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RANDOM_WEIGHT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RANDOM_WEIGHT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODE_DATED_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODE_DATED_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIVATE_LABEL_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIVATE_LABEL_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_UNIT_SIZE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_UNIT_SIZE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKEN_CASE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BROKEN_CASE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKEN_CASE_ORDER_MULTIPLE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BROKEN_CASE_ORDER_MULTIPLE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_RETAILER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_RETAILER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_OUTER",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_OUTER",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_INNER",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_INNER",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAILER_CASE_WEIGHT_KGS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RETAILER_CASE_WEIGHT_KGS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAILER_CASE_CUBE_M",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RETAILER_CASE_CUBE_M",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAILER_CASE_DEPTH_M",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RETAILER_CASE_DEPTH_M",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAILER_CASE_HEIGHT_M",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RETAILER_CASE_HEIGHT_M",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAILER_CASE_WIDTH_M",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RETAILER_CASE_WIDTH_M",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_SUB_RANGE_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_SUB_RANGE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUYING_MASTER_PACK",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BUYING_MASTER_PACK",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BUYING_STATUS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUYING_STATUS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUY_IN_PALLET_LAYER_CASE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUY_IN_PALLET_LAYER_CASE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_GRADE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_GRADE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COOL_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COOL_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COOL_CODE_LEVEL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COOL_CODE_LEVEL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AUSTRALIAN_MADE_AND_GROWN_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AUSTRALIAN_MADE_AND_GROWN_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOT_LOCATION_1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOT_LOCATION_1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOT_LOCATION_1_AREA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOT_LOCATION_1_AREA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOT_LOCATION_2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOT_LOCATION_2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOT_LOCATION_2_AREA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOT_LOCATION_2_AREA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALM_BONUS_STOCK_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALM_BONUS_STOCK_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WET_APPLICABLE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WET_APPLICABLE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TRADE_SHOW_ONLY_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRADE_SHOW_ONLY_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOW_MOVING_PRODUCT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOW_MOVING_PRODUCT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEMPORARY_PRODUCT_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEMPORARY_PRODUCT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_PRODUCT_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_PRODUCT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBSTITUTE_PRODUCT_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUBSTITUTE_PRODUCT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PARENT_PRODUCT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PARENT_PRODUCT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_SPLIT_CATEGORY_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDER_SPLIT_CATEGORY_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METCASH_ITEM_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "METCASH_ITEM_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FOOD_NON_FOOD_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FOOD_NON_FOOD_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHARGE_THROUGH_PRODUCT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHARGE_THROUGH_PRODUCT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_BOTTLE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_BOTTLE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSUMER_UNITS_PER_TRADEABLE_UNIT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONSUMER_UNITS_PER_TRADEABLE_UNIT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIVING_LIMIT_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "RECEIVING_LIMIT_DAYS",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "COMMON_SRP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMMON_SRP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STRATA_MARGIN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STRATA_MARGIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_STOCK_ON_HAND_IN_CASES",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOTAL_STOCK_ON_HAND_IN_CASES",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_STOCK_ON_HAND_IN_UNITS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOTAL_STOCK_ON_HAND_IN_UNITS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "FINAL_PRODUCT_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FINAL_PRODUCT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEMPORARY_PRODUCT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEMPORARY_PRODUCT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FILE_CREATED_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FILE_CREATED_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_PACK_SIZE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PRODUCT_PACK_SIZE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "STORAGE_TI",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "STORAGE_TI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "STORAGE_HI",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "STORAGE_HI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_TI",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SUPPLIER_TI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_HI",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SUPPLIER_HI",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CDS_LEVY_PER_UNIT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CDS_LEVY_PER_UNIT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "DESPATCH_LIMIT_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DESPATCH_LIMIT_DAYS",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKET_COST_PER_RETAILER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "MARKET_COST_PER_RETAILER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STANDARD_COST_PER_RETAILER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STANDARD_COST_PER_RETAILER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "NEW_LINE_BASE_SRP",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "NEW_LINE_BASE_SRP",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "QTY_STOCK_ON_HAND_IN_BROKEN_CASES",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QTY_STOCK_ON_HAND_IN_BROKEN_CASES",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "QTY_STOCK_ON_HAND_IN_CASES",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QTY_STOCK_ON_HAND_IN_CASES",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_STOCK_ON_HAND_VALUE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOTAL_STOCK_ON_HAND_VALUE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_PALLET",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_PALLET",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_ACTIVE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_ACTIVE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "STOCK_ON_ORDER_CASE_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STOCK_ON_ORDER_CASE_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RESERVED_STOCK_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RESERVED_STOCK_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "DEAL_COST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "DEAL_COST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "DUTY_FREE_COST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "DUTY_FREE_COST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAINED_COST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RETAINED_COST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDERING_UNIT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDERING_UNIT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_STOCK_ON_ORDER_CASE_VALUE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOTAL_STOCK_ON_ORDER_CASE_VALUE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_RESERVED_COST_VALUE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOTAL_RESERVED_COST_VALUE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "EMPLOYEE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EMPLOYEE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FISC_YEAR",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "FISC_YEAR",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DUTY_UNIT_TAX_AMOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "DUTY_UNIT_TAX_AMOUNT",
+									"type": "Single"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_AZURE_FCT_INVENTORY_FIN_INITIAL_V",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDL_HANA_FCT_INVENTORY_FIN",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_FCT_INITIAL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

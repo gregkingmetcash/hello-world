@@ -1,0 +1,20 @@
+{
+	"name": "d_BW_FCT_REBATE_WH",
+	"properties": {
+		"description": "BW WH Rebate Facts",
+		"linkedServiceName": {
+			"referenceName": "SapOpenHub_HBP_HANABWPROD_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BW"
+		},
+		"annotations": [],
+		"type": "SapOpenHubTable",
+		"schema": [],
+		"typeProperties": {
+			"openHubDestinationName": "MOHUB_IN"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

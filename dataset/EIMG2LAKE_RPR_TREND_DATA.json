@@ -1,0 +1,144 @@
+{
+	"name": "EIMG2LAKE_RPR_TREND_DATA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_STORAGE_BLOB_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "EIMG2LAKE_FOODS_BUSINESS"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "RPRData/RPRTrendData",
+				"container": "eim-food-business-data"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "administration_state_cd",
+				"type": "String"
+			},
+			{
+				"name": "store_channel_cd",
+				"type": "String"
+			},
+			{
+				"name": "address_id",
+				"type": "String"
+			},
+			{
+				"name": "recent_store_nm",
+				"type": "String"
+			},
+			{
+				"name": "baron_dsc",
+				"type": "String"
+			},
+			{
+				"name": "pmstore",
+				"type": "String"
+			},
+			{
+				"name": "gp_err_store",
+				"type": "String"
+			},
+			{
+				"name": "store_status",
+				"type": "String"
+			},
+			{
+				"name": "prom_wk_end_dt",
+				"type": "String"
+			},
+			{
+				"name": "sales_excl_gst_excl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "sales_excl_gst_incl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "sales_qty_excl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "sales_qty_incl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "basket_count_excl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "basket_count_incl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "gp_excl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "gp_incl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "gp_promsheet_excl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "gp_promsheet_incl_tobacco_ly",
+				"type": "String"
+			},
+			{
+				"name": "sales_excl_gst_excl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "sales_excl_gst_incl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "sales_qty_excl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "sales_qty_incl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "basket_count_excl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "basket_count_incl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "gp_excl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "gp_incl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "gp_promsheet_excl_tobacco_ty",
+				"type": "String"
+			},
+			{
+				"name": "gp_promsheet_incl_tobacco_ty",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

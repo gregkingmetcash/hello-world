@@ -1,0 +1,636 @@
+{
+	"name": "p_HANA_AZURE_EDL_HANA_FCT_PURCHASE_ORDER_LINE_CURRENT_INITIAL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_ORDERED_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_ORDERED_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_PO_SENT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_PO_SENT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_EXPECTED_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_EXPECTED_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_EXPECTED_NEW_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_EXPECTED_NEW_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_RECEIVED_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_RECEIVED_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_APPOINTMENT_DATE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PO_APPOINTMENT_DATE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERNAL_SUPP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERNAL_SUPP_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "EMPLOYEE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "EMPLOYEE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUB_VENDOR_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUB_VENDOR_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "WAREHOUSE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WAREHOUSE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_LINE_NUM",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PO_LINE_NUM",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_STATUS_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_STATUS_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_STATUS_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_STATUS_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_FULFILLMENT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_FULFILLMENT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_ORDERED_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_ORDERED_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CASES_ORDERED_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CASES_ORDERED_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_PACK_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PRODUCT_PACK_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_EXT_WEIGHT_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PO_EXT_WEIGHT_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_EXT_LITERAGE_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PO_EXT_LITERAGE_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_COST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PO_COST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_COST_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PO_COST_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_GST_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PO_GST_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_OFF_INVOICE_ALLOWANCE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PO_OFF_INVOICE_ALLOWANCE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_ORIGINAL_ORDERED_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PO_ORIGINAL_ORDERED_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_ORIGINAL_COST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PO_ORIGINAL_COST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_TRANSACTION_TYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_TRANSACTION_TYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_AGREED_LEAD_TIME",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PO_AGREED_LEAD_TIME",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKEN_CASE_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BROKEN_CASE_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_EDI_CONFIRM_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_EDI_CONFIRM_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_CONFIRM_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_CONFIRM_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "POA_CONFIRM_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "POA_CONFIRM_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ASN_CONFIRM_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ASN_CONFIRM_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FUNCTIONAL_ACK_CONFIRM_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FUNCTIONAL_ACK_CONFIRM_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTER_BRANCH_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTER_BRANCH_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROFORMA_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROFORMA_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROFORMA_LINE_NUM",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "PROFORMA_LINE_NUM",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ASN_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ASN_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CASES_RECEIVED_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CASES_RECEIVED_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_RECEIVED_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_RECEIVED_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIVED_ITEM_WEIGHT_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RECEIVED_ITEM_WEIGHT_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIVED_EXT_WEIGHT_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RECEIVED_EXT_WEIGHT_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PROFORMA_COST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PROFORMA_COST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PROFORMA_COST_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PROFORMA_COST_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTRACT_DAY_NUM",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXTRACT_DAY_NUM",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_EXTRACT_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SOURCE_EXTRACT_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "FINAL_PO_LINE_NUM",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "FINAL_PO_LINE_NUM",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_CREATE_DT",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SOURCE_CREATE_DT",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_AZURE_FCT_PURCHASE_ORDER_LINE_CURRENT_INITIAL_V",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDL_HANA_FCT_PURCHASE_ORDER_LINE_CURRENT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_FCT_INITIAL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,383 @@
+{
+	"name": "d_AZURE_SYN_STG_DIM_SUPPLIER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "SUPPLIER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUPPLIER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPP_STAT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "INTERNAL_SUPP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "CONTR_WH_SUPP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "AAW_SUPP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_LINE_1_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_SUBURB_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_POST_CODE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "ORD_PHONE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "FAX_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "ALTERNATE_ADDRESS_LINE_1_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "ALTERNATE_ADDRESS_SUBURB_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "ALTERNATE_ADDRESS_POST_CD_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "PARENT_COMP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "WS_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "RET_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPP_GRADE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPP_TYPE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "DS_METH_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "DELETE_DT",
+				"type": "date"
+			},
+			{
+				"name": "SA_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_MAIN_ADDRESS_LINE_1_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_MAIN_ADDRESS_SUBURB_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_MAIN_ADDRESS_POST_CODE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_SUPP_STAT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_AUTO_MKT_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_FAX_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_ABN_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_TFR_BRCH_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "SA_ACCT_PHONE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_CREATE_DT",
+				"type": "date"
+			},
+			{
+				"name": "SA_DELETE_DT",
+				"type": "date"
+			},
+			{
+				"name": "EFF_START_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EFF_END_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "MAIN_ADDRESS_LINE_2_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_STATE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_COUNTRY_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "ALTERNATE_ADDRESS_LINE_2_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "ALTERNATE_ADDRESS_COUNTRY_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "ALTERNATE_ADDRESS_STATE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_MAIN_ADDRESS_LINE_2_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_MAIN_ADDRESS_COUNTRY_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_MAIN_ADDRESS_STATE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_STATUS_EFFECTIVE_DT",
+				"type": "date"
+			},
+			{
+				"name": "SUPPLIER_CONVERSION_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MEGA_SUPPLIER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPER_SUPPLIER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_SUPPLIED_COMPETITOR_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "DATA_SUPPLIED_OWN_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPER_VENDOR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPER_VENDOR_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "MN_COMP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MN_COMP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "COUNTRY_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "COUNTRY_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "COUNTRY_FORMAL_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "COMP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "COMP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "BUS_PILLAR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BUS_PILLAR_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "EDI_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "EDI_OPTN_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "OUTBND_PO_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_FUNC_ACK_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "INBND_PO_ACK_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "ADV_SHP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "INBND_INV_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "ETRADE_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "EXPR_RCPT_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "UPDATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "date"
+			},
+			{
+				"name": "UPDATED_DT",
+				"type": "date"
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "UPDATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "UPSERT_FLAG",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ACTIVE_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "ROYAL_SUPP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "CDS_SUP_REG_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "BUYER_NUM",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_DIM_SUPPLIER"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

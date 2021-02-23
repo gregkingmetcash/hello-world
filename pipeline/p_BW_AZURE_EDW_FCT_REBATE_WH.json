@@ -1,0 +1,430 @@
+{
+	"name": "p_BW_AZURE_EDW_FCT_REBATE_WH",
+	"properties": {
+		"description": "WH Rebate Facts",
+		"activities": [
+			{
+				"name": "Copy_xrc",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MOHUB_IN"
+					},
+					{
+						"name": "Destination",
+						"value": "EDW.FCT_REBATE_WH"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SapOpenHubSource",
+						"excludeLastRequest": false
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"maxConcurrentConnections": 5,
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging",
+						"enableCompression": true
+					},
+					"parallelCopies": 5,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OHREQUID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "REQUEST_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DATAPAKID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DATAPAK_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MPCM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CATEGORY_MANAGER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MITYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INCOME_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MRSRC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_SOURCE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REC_ID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "RECORD_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MFDATE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCAL_DATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UNIT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UNIT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CURRENCY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CURRENCY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MDIV_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DIVISION_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MDPC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DEPARTMENT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CALDAY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CALENDER_DAY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MBNUM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MREGION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ITEM_EXCLUSION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ITEM_EXCLUSION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSUPP_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MVEND_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VENDOR_NAME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPROD_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REBATE_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MRCOD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REBATE_RATE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REBATE_RATE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REBATE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXT_CATCH_WEIGHT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "EXT_CATCH_WEIGHT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CASES",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CASES_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PURCHASE_VALUE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PURCHASE_VALUE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REBATE_AMOUNT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REBATE_AMOUNT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GST_AMOUNT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REBATE_GST_AMOUNT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTENDED_TOTAL",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "EXTENDED_TOTAL_AMOUNT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GENERIC_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GENERIC_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ITEM_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ITEM_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLASS_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLASS_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_FILE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SOURCE_FILE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATE_DATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UPDATE_DATE",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_BW_FCT_REBATE_WH",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDW_FCT_REBATE_WH",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/BW_TO_SYNAPSE"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

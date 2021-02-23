@@ -1,0 +1,972 @@
+{
+	"name": "p_HANA_AZURE_STG_FCT_INVENTORY_OPN_DELTA",
+	"properties": {
+		"activities": [
+			{
+				"name": "HANA_INSERT_AUDIT",
+				"description": "Target: HANA\nTask: This will insert data to HANA audit table for delta watermark for next run.",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "PROC_SYN_MERGE_FCT_INVENTORY_OPN",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 1
+						}
+					},
+					"sink": {
+						"type": "OdbcSink",
+						"writeBatchSize": 0,
+						"preCopyScript": "call EIM_EDM.PROC_INS_EXTRACT_AUDIT('AZURE_FCT_INVENTORY_OPN', current_timestamp, 0)"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DUMMY_COLUMN",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DUMMY_COLUMN",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_LAKE_DUMMY_CSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_HANA_ODBC_DUMMY_TABLE",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "COPY_FCT_INVENTORY_OPN",
+				"description": "Target: Azure Synapse\nTask: This will extract data from HANA and copy to Azure Synapse.",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "HANA_DELETE_AUDIT",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [STG].[STG_HANA_FCT_INVENTORY_OPN]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "EMPLOYEE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "EMPLOYEE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FILE_CREATED_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "FILE_CREATED_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DISTRIBUTION_CENTER_CD",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DISTRIBUTION_CENTER_CD",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "WAREHOUSE_CD",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "WAREHOUSE_CD",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ACCOUNTING_DEPARTMENT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ACCOUNTING_DEPARTMENT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_DESCRIPTION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_DESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STOCK_CONTROLLER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STOCK_CONTROLLER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CODE_DATED_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODE_DATED_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAILER_CASE_WEIGHT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RETAILER_CASE_WEIGHT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "OUTER_WEIGHT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "OUTER_WEIGHT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "INNER_WEIGHT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "INNER_WEIGHT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNIT_WEIGHT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNIT_WEIGHT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_RETAILER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_RETAILER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_OUTER",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_OUTER",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_INNER",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_INNER",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_PALLET",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_PALLET",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STORAGE_HI",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STORAGE_HI",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STORAGE_TI",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STORAGE_TI",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_HI",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SUPPLIER_HI",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_TI",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SUPPLIER_TI",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STD_COST_PER_RETAIL_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STD_COST_PER_RETAIL_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "KNAPP_SUGGESTED_UNITS_TOTE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "KNAPP_SUGGESTED_UNITS_TOTE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "KNAPP_SUGGESTED_INNERS_TOTE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "KNAPP_SUGGESTED_INNERS_TOTE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "KNAPP_SUGGESTED_OUTERS_TOTE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "KNAPP_SUGGESTED_OUTERS_TOTE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CYCLE_COUNT_CLASSIFICATION",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CYCLE_COUNT_CLASSIFICATION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CATCH_WEIGHT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CATCH_WEIGHT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RANDOM_WEIGHT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RANDOM_WEIGHT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_STATUS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_STATUS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PENDING_DELETE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PENDING_DELETE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEMPORARY_PRODUCT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEMPORARY_PRODUCT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEMPORARY_PRODUCT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEMPORARY_PRODUCT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FINAL_PRODUCT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FINAL_PRODUCT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOT_LOCATION_ID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOT_LOCATION_ID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOT_UOM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOT_UOM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LOCATION_USAGE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LOCATION_USAGE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LICENSE_PLATE_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LICENSE_PLATE_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVENTORY_POSITION_CATG_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVENTORY_POSITION_CATG_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVENTORY_STATUS_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVENTORY_STATUS_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PALLET_PLACEMENT_DTIM",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PALLET_PLACEMENT_DTIM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PALLET_CATCH_WEIGHT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PALLET_CATCH_WEIGHT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_NUMBER",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIPT_NUMBER",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "RECEIPT_NUMBER",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIVED_DTIM",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "RECEIVED_DTIM",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIVED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "RECEIVED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CODE_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CODE_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_AGE_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PRODUCT_AGE_DAYS",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TOT_STOCK_HAND_RETAILER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOT_STOCK_HAND_RETAILER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "TOT_STOCK_HAND_OUTERS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOT_STOCK_HAND_OUTERS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "TOT_STOCK_HAND_INNERS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOT_STOCK_HAND_INNERS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "TOT_STOCK_HAND_UNITS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOT_STOCK_HAND_UNITS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_STOCK_VALUE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOTAL_STOCK_VALUE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "QTY_STOCK_ON_HAND_OUTERS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "QTY_STOCK_ON_HAND_OUTERS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "QTY_STOCK_ON_HAND_INNERS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "QTY_STOCK_ON_HAND_INNERS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "QTY_STOCK_ON_HAND_UNITS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "QTY_STOCK_ON_HAND_UNITS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "DESPATCH_LIMIT_DAYS",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DESPATCH_LIMIT_DAYS",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LAST_DATE_TO_DESPATCH",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "LAST_DATE_TO_DESPATCH",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DAYS_LEFT_TO_DESPATCH",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "DAYS_LEFT_TO_DESPATCH",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_ACTIVE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_ACTIVE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIPPER_CASE_COST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SHIPPER_CASE_COST_AMT",
+									"type": "Single"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_AZURE_FCT_INVENTORY_OPN_DELTA_V",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_STG_HANA_FCT_INVENTORY_OPN",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "HANA_DELETE_AUDIT",
+				"description": "Target: HANA\nTask: For restart ability.\nThis will delete the audit record for the day.",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 1
+						}
+					},
+					"sink": {
+						"type": "OdbcSink",
+						"writeBatchSize": 0,
+						"preCopyScript": "call EIM_EDM.PROC_DEL_EXTRACT_AUDIT('AZURE_FCT_INVENTORY_OPN', current_date)"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "DUMMY_COLUMN",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "DUMMY_COLUMN",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_LAKE_DUMMY_CSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_HANA_ODBC_DUMMY_TABLE",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "PROC_SYN_MERGE_FCT_INVENTORY_OPN",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "COPY_FCT_INVENTORY_OPN",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[MERGE_FCT_INVENTORY_OPN]"
+				},
+				"linkedServiceName": {
+					"referenceName": "EIM_SYN_EDW_LNK",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_FCT_DELTA"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

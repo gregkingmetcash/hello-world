@@ -1,0 +1,20 @@
+{
+	"name": "DIM_REBATE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "EDW",
+			"table": "DIM_REBATE"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

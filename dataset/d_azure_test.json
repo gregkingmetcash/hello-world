@@ -1,0 +1,31 @@
+{
+	"name": "d_azure_test",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "product_cd",
+				"type": "varchar"
+			},
+			{
+				"name": "product_desc",
+				"type": "varchar"
+			},
+			{
+				"name": "measure",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "stg_hana_cv_test"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

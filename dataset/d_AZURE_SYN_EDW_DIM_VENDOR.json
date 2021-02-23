@@ -1,0 +1,77 @@
+{
+	"name": "d_AZURE_SYN_EDW_DIM_VENDOR",
+	"properties": {
+		"description": "BW VENDOR Attributes",
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "REQUEST_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DATAPAK_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RECORD_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SUPPLIER_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "VENDORACCOUNT_GROUP",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "STATE_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPERVENDOR_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPERVENDOR_NAME",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "EDW",
+			"table": "DIM_VENDOR"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

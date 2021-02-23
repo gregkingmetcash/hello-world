@@ -1,0 +1,20 @@
+{
+	"name": "d_AZURE_SYN_EDL_HANA_FCT_SALES_INVOICE_LINE_ITEM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "EDL",
+			"table": "HANA_FCT_SALES_INVOICE_LINE_ITEM"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

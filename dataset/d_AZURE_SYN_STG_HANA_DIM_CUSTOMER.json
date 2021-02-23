@@ -1,0 +1,634 @@
+{
+	"name": "d_AZURE_SYN_STG_HANA_DIM_CUSTOMER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "CUSTOMER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "STORE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CUSTOMER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MN_COMP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MN_COMP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "COUNTRY_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "COUNTRY_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "MNC_COMP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "COMP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "COMP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "BUS_PILLAR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BUS_PILLAR_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPP_DIVISION_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPP_DIVISION_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_PHONE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_FAX_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "TRADE_STAT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "NO_ORD_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "BAN_GRP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BAN_GRP_ABBR_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "BAN_GRP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "BAN_GRP_COVER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "BAN_GRP_TYP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "OWNER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "OWNER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "OWNER_STRUC_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "MANAGER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MANAGER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "MGR_STRUC_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "ALT_BAN_GRP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "ALT_BAN_GRP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPP_BRCH_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "GRO_SUPP_BRCH_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "PER_SUPP_BRCH_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "GM_SUPP_BRCH_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_REPRESENTATIVE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_REPRESENTATIVE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "LION_NATH_REP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "DEBTOR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "WS_PRICE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "RET_PRICE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "ALT_WS_PRICE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MNM_PRICE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PREV_MNM_PRICE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "HOTEL_ASSOC_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "BOND_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "TAX_EXEMPT_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "DIR_ALLOW_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "BONUS_SCHEME_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "GST_EXEMPT_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "SVC_CUSTOMER_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATE_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ABN_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_ITEM_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_PROMO_GRP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_COMMENTS_TEXT",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_PRICE_FREQ_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_SUB_GRP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_VERSION_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_INV_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_ORD_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_1ST_CONNECT_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "HS_WS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "HS_SW_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "LIQ_LIC_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "DEBTOR_OWNER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "LIQ_LIC_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "LIQ_LIC_TYPE_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "MEGA_CHANNEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MEGA_CHANNEL_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "CHANNEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CHANNEL_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUB_CHANNEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUB_CHANNEL_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "BOTTLESHP_TGT_MKT",
+				"type": "varchar"
+			},
+			{
+				"name": "RESTR_FOOD_STYLE",
+				"type": "varchar"
+			},
+			{
+				"name": "RESTR_MKT_SEG_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_OWNER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "USER_LOCY_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_LINE_1_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_LINE_2_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_SUBURB_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_POST_CODE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_STATE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "MAIN_ADDRESS_COUNTRY_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "TRADING_STATUS_EFF_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ORIGIN_COUNTRY_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "ORIGINAL_CUSTOMER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MASTER_CUSTOMER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MEGA_BANNER_GROUP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MEGA_BANNER_GROUP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPER_BANNER_GROUP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPER_BANNER_GROUP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "CURRENT_BANNER_GROUP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CURRENT_BANNER_GROUP_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "REPRESENTATIVE_STATUS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "REPRESENTATIVE_STATUS_EFF_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "OUTLET_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_MANAGER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_REPRESENTATIVE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BANNER_GROUP_STATUS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BANNER_GROUP_STATUS_EFF_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LOCAL_HOST_LOCATION_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_REPRESENTATIVE_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_REPRESENTATIVE_LOOKUP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_LINE_1_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_LINE_2_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_SUBURB_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_STATE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "BILL_TO_ADDRESS_POST_CODE_TXT",
+				"type": "varchar"
+			},
+			{
+				"name": "VILLAGE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "VILLAGE_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "BUSINESS_OWNERSHIP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BUSINESS_OWNERSHIP_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "ERP_STORE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "ERP_STORE_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_SMTRS",
+				"type": "varchar"
+			},
+			{
+				"name": "BUSINESS_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BUSINESS_TYPE_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_CLASS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_CLASS_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "BARON_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TERM_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TERM_DESC",
+				"type": "varchar"
+			},
+			{
+				"name": "EFF_START_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "EFF_END_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "ACTIVE_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "UPDATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "UPDATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "UPDATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MSO_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "MSO_DESC",
+				"type": "varchar"
+			},
+			{
+				"name": "FIRST_ORD_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "LAST_ORD_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "TRADE_MODEL_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "INTERNAL_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "CUSTOMER_INT_BRANCH",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_DIM_CUSTOMER"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

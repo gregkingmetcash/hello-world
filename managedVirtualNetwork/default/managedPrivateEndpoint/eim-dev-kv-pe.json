@@ -1,0 +1,10 @@
+{
+	"name": "eim-dev-kv-pe",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/6612f8eb-c484-4dae-8c27-5d27dcdd0e34/resourceGroups/EIM-UAT-RG/providers/Microsoft.KeyVault/vaults/EIM-DEV-KV",
+		"groupId": "vault",
+		"fqdns": [
+			"eim-dev-kv.vaultcore.azure.net"
+		]
+	}
+}

@@ -1,0 +1,549 @@
+{
+	"name": "p_HANA_AZURE_EDL_HANA_FCT_DIRECT_INVOICE_LN",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"query": "select \nCUSTOMER_BRANCH_SK,\nORDER_BY_CUSTOMER_SK,\nSUPPLIER_SK,\nPRODUCT_SK,\nDIRECT_INV_NUM,\nLINE_SEQUENCE_NUM,\nSUPPLIER_INV_NUM,\nSUPPLIER_INV_DATE,\nBANNER_GROUP_CD,\nRATABILITY_CD,\nLIQUOR_LICENSE_TYPE_CD,\nLINE_OR_PROD_DESC,\nGL_BRANCH_ID,\nDIR_INV_MODE_CD,\nSTORE_ID,\nPRODUCT_LEVY_TYPE,\nEXT_LITRE_QTY,\nQTY_SUPPLIED,\nEXTENDED_CUST_AMT,\nEXT_CUST_GST_AMT,\nEXT_CUST_WET_AMT,\nSUPP_INVOICE_GST,\nFEE_CD,\nORD_LINE_NUM,\nCT_SALES_AMOUNT,\nCT_SERVICE_FEES,\nCT_COGS,\nCT_DISCOUNT,\nGST_DISC_AMOUNT,\nDFEE_CD,\nDFEE_DESC,\nEXTRACT_DAY_NUM,\nCREATED_BATCH_NO,\nUPDATED_BATCH_NO,\nCREATED_DT,\nUPDATED_DT,\nCREATED_BY,\nUPDATED_BY,\nSOURCE_SYSTEM_CD,\nDIR_INV_LN_DATE_SK,\nPK_HASH_SK,\nSUPPLIER_INV_INT,\nPRODUCT_CAT_CD,\nINV_LN_CREATION_DATE,\nINV_LN_CREATION_TIME,\nINV_LN_SPARE_ALPHA,\nCT_SETTLMT_DISC_AMOUNT,\nGST_SETTLMT_DISC_AMOUNT\n from EIM_EDM.FCT_DIRECT_INVOICE_LN where DIR_INV_LN_DATE_SK>=20180430",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [ARCHIVE].[ARC_HANA_FCT_DIRECT_INVOICE_LN]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CUSTOMER_BRANCH_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "CUSTOMER_BRANCH_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_BY_CUSTOMER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "ORDER_BY_CUSTOMER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "DIRECT_INV_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DIRECT_INV_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINE_SEQUENCE_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LINE_SEQUENCE_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_INV_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_INV_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_INV_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SUPPLIER_INV_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "BANNER_GROUP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BANNER_GROUP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RATABILITY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RATABILITY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LIQUOR_LICENSE_TYPE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LIQUOR_LICENSE_TYPE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINE_OR_PROD_DESC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LINE_OR_PROD_DESC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GL_BRANCH_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GL_BRANCH_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "DIR_INV_MODE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DIR_INV_MODE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STORE_ID",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "STORE_ID",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_LEVY_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_LEVY_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXT_LITRE_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXT_LITRE_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "QTY_SUPPLIED",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QTY_SUPPLIED",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTENDED_CUST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXTENDED_CUST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "EXT_CUST_GST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXT_CUST_GST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "EXT_CUST_WET_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXT_CUST_WET_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPP_INVOICE_GST",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SUPP_INVOICE_GST",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "FEE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FEE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORD_LINE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORD_LINE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CT_SALES_AMOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CT_SALES_AMOUNT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CT_SERVICE_FEES",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CT_SERVICE_FEES",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CT_COGS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CT_COGS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CT_DISCOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CT_DISCOUNT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GST_DISC_AMOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GST_DISC_AMOUNT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "DFEE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DFEE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DFEE_DESC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DFEE_DESC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTRACT_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "EXTRACT_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DIR_INV_LN_DATE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DIR_INV_LN_DATE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_INV_INT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_INV_INT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_CAT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_CAT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INV_LN_CREATION_DATE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "INV_LN_CREATION_DATE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "INV_LN_CREATION_TIME",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "INV_LN_CREATION_TIME",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "INV_LN_SPARE_ALPHA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INV_LN_SPARE_ALPHA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CT_SETTLMT_DISC_AMOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CT_SETTLMT_DISC_AMOUNT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GST_SETTLMT_DISC_AMOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GST_SETTLMT_DISC_AMOUNT",
+									"type": "Single"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_FCT_DIRECT_INVOICE_LN",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDL_HANA_FCT_DIRECT_INVOICE_LN",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_FCT_FULL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,420 @@
+{
+	"name": "p_BW_AZURE_EDW_FCT_REBATEBXFR_WH",
+	"properties": {
+		"description": "WH Rebate Branch Transfers Facts",
+		"activities": [
+			{
+				"name": "Copy_xrc",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MOHUB_IN3"
+					},
+					{
+						"name": "Destination",
+						"value": "EDW.FCT_REBATEBXFR_WH"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SapOpenHubSource",
+						"excludeLastRequest": false
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"maxConcurrentConnections": 5,
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging",
+						"enableCompression": true
+					},
+					"parallelCopies": 5,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OHREQUID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "REQUEST_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DATAPAKID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DATAPAK_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "RECORD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "RECORD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MBFUN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUSINESS_FUNCTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPILLAR_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPSTATE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MBNUMF",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_NO_FROM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MBNUM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_NO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSUPP_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MVEND_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPSECT_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_SECTION_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPCAT_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_CATEGORY_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPROD_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPCBND_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_CORPORATE_BRAND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPCM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CATEGORY_MANAGER_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSEGGM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SEGMENT_HOT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSEGHM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SEGMENT_TM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPPDM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PDM_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MISTR",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INCOME_STREAM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MITYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INCOME_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MRSRC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_SOURCE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MRCOD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MREBN_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_NUMBER",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "REBATE_DESC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_DESCRIPTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSOURCE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MFDATE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCAL_DATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MDATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALWEEKEND_DATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MFMDTE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALMONTHEND_DATE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MFDTEMN_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALMONTH_WEEKNO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "/BIC/MFDTEYN_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALYEAR_WEEKNO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UNIT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UNIT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CURRENCY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CURRENCY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMOUNT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AMOUNT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "QUANTITY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QUANTITY",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_BW_FCT_REBATEBXFR_WH",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDW_FCT_REBATEBXFR_WH",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/BW_TO_SYNAPSE"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,64 @@
+{
+	"name": "EIMG2LAKE_RPR_STORE_DATA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_STORAGE_BLOB_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "EIMG2LAKE_FOODS_BUSINESS"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "RPRData/RPRStoreData",
+				"container": "eim-food-business-data"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "address_id",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "Channel",
+				"type": "String"
+			},
+			{
+				"name": "Store",
+				"type": "String"
+			},
+			{
+				"name": "MSO",
+				"type": "String"
+			},
+			{
+				"name": "Price Match Store",
+				"type": "String"
+			},
+			{
+				"name": "GP Approved Store",
+				"type": "String"
+			},
+			{
+				"name": "Store Status",
+				"type": "String"
+			},
+			{
+				"name": "in_latest_RPR",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

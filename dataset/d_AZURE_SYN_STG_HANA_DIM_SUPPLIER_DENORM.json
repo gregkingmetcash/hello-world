@@ -1,0 +1,106 @@
+{
+	"name": "d_AZURE_SYN_STG_HANA_DIM_SUPPLIER_DENORM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "SUPPLIER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUPPLIER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BUS_PILLAR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SA_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPER_VENDOR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPER_VENDOR_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "ROYAL_SUPP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "EDI_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "EDI_OPTN_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "OUTBND_PO_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "PO_FUNC_ACK_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "INBND_PO_ACK_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "ADV_SHP_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "INBND_INV_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "ETRADE_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "EXPR_RCPT_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "CDS_SUP_REG_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "BUYER_NUM",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_DIM_SUPPLIER_DENORM"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

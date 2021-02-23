@@ -1,0 +1,1957 @@
+{
+	"name": "p_HANA_AZURE_STG_HANA_DIM_PRODUCT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [STG].[STG_HANA_DIM_PRODUCT]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MN_COMP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MN_COMP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MN_COMP_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MN_COMP_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COUNTRY_FORMAL_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COUNTRY_FORMAL_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMP_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMP_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DIVISION_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DIVISION_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DIVISION_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DIVISION_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRCH_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRCH_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRCH_LONG_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRCH_LONG_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRCH_SHORT_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRCH_SHORT_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_DESC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_DESC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAND_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRAND_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUB_BRAND_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUB_BRAND_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_SECTION_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_SECTION_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_SECTION_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_SECTION_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_DEPT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_DEPT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_DEPT_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_DEPT_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_CATEGORY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_CATEGORY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_CATEGORY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_CATEGORY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_COMMODITY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_COMMODITY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_COMMODITY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_COMMODITY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_SUB_COMM_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_SUB_COMM_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSC_SUB_COMM_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MSC_SUB_COMM_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARY_SUPP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARY_SUPP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRIMARY_SUPP_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRIMARY_SUPP_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PAY_TO_SUPP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PAY_TO_SUPP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUB_RANGE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUB_RANGE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUB_RANGE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUB_RANGE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GTI_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GTI_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GST_RATE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "GST_RATE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "GST_APPLICABLE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GST_APPLICABLE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WET_APPLICABLE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WET_APPLICABLE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RATABILITY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RATABILITY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UNIT_SHAPE_DESC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UNIT_SHAPE_DESC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BASUNIT_CAP_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BASUNIT_CAP_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BASUNIT_CAP_UOM_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BASUNIT_CAP_UOM_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BASUNIT_P_OTU_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BASUNIT_P_OTU_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BASUNIT_P_ITU_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "BASUNIT_P_ITU_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "MIN_SELL_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MIN_SELL_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "STOCKED_ITEM_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STOCKED_ITEM_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUBSTITUTE_PROD_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUBSTITUTE_PROD_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PACKAGE_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PACKAGE_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HOUSE_BRAND_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HOUSE_BRAND_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LEVY_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LEVY_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LEVY_TYPE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "LEVY_TYPE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ITEM_TYPE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ITEM_TYPE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ITEM_TYPE_DESC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ITEM_TYPE_DESC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DUTY_FREE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DUTY_FREE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CNTRY_OF_MANUF_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CNTRY_OF_MANUF_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CNTRY_OF_MANUF_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CNTRY_OF_MANUF_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CNTRY_OF_PACK_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CNTRY_OF_PACK_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CNTRY_OF_PACK_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CNTRY_OF_PACK_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIP_FROM_CNTRY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SHIP_FROM_CNTRY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIP_FROM_CNTRY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SHIP_FROM_CNTRY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALCOHOL_STREN_DESC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALCOHOL_STREN_DESC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALCOHOL_VOL_PERC",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ALCOHOL_VOL_PERC",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LAL_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LAL_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "TAX_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TAX_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TARG_MKT_SEG_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TARG_MKT_SEG_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AGE_YEAR_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "AGE_YEAR_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "VINTAGE_YEAR_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "VINTAGE_YEAR_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "REGION_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REGION_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WET_RATE",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "WET_RATE",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "AREA_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AREA_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADDITIVES_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADDITIVES_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SWEETNESS_LEV_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SWEETNESS_LEV_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SPARKLING_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SPARKLING_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GRAPE_VARIETY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GRAPE_VARIETY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FORTIFIED_TYPE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FORTIFIED_TYPE_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WOODED_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WOODED_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CRUSHABILITY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CRUSHABILITY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GM_TRANSFER_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GM_TRANSFER_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FLOW_THROUGH_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FLOW_THROUGH_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CS_PROD_CAT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CS_PROD_CAT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRICING_UNIT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRICING_UNIT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOW_MOVER_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOW_MOVER_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BONUS_PK_PROD_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BONUS_PK_PROD_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROD_ACTIVATION_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "PROD_ACTIVATION_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "MAJOR_LINE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAJOR_LINE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COST_PROD_GRP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COST_PROD_GRP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLEEVE_STICK_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SLEEVE_STICK_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "PHARMACY_ITEM_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PHARMACY_ITEM_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DOM_DIST_LOCN_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DOM_DIST_LOCN_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAX_ORDER_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "MAX_ORDER_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CASE_WEIGHT_KG",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CASE_WEIGHT_KG",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CASE_LITRES",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CASE_LITRES",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "MB_GRADE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MB_GRADE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IMPORTED_FLAG_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IMPORTED_FLAG_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAX_ORDER_IN_FORCE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAX_ORDER_IN_FORCE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TRADE_GTI_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TRADE_GTI_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SHIPPING_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SHIPPING_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OUTERS_PER_LAYER_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OUTERS_PER_LAYER_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "LAYERS_PER_PALLET_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LAYERS_PER_PALLET_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OUTER_HEIGHT_MM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OUTER_HEIGHT_MM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OUTER_WIDTH_MM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OUTER_WIDTH_MM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "OUTER_DEPTH_MM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "OUTER_DEPTH_MM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CORPORATE_BRAND_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CORPORATE_BRAND_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CORPORATE_BRAND_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CORPORATE_BRAND_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMS_EXCISE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMS_EXCISE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DIRECT_PRODUCT_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DIRECT_PRODUCT_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_CONVERSION_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_CONVERSION_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_STATUS_NATIONAL_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_STATUS_NATIONAL_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_STATUS_BRANCH_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_STATUS_BRANCH_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RESTRICTED_PRODUCT_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RESTRICTED_PRODUCT_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAIL_PACK_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "RETAIL_PACK_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "UNDER_BOND_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UNDER_BOND_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRAND_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRAND_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAIL_DEPARTMENT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RETAIL_DEPARTMENT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAIL_DEPARTMENT_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RETAIL_DEPARTMENT_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RETAIL_PRODUCT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RETAIL_PRODUCT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FRESH_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FRESH_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_STATUS_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_STATUS_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_PACK_QTY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "PRODUCT_PACK_QTY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CATCH_WEIGHT_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CATCH_WEIGHT_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RANDOM_WEIGHT_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "RANDOM_WEIGHT_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VTTG_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VTTG_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_PRODUCT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_PRODUCT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_LT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_LT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_MASTER_GROUP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_MASTER_GROUP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_MASTER_GROUP_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_MASTER_GROUP_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_GROUP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_GROUP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_GROUP_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_GROUP_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_FAMILY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_FAMILY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_FAMILY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_FAMILY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_SECTOR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_SECTOR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_SECTOR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_SECTOR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_CATEGORY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_CATEGORY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_PRODUCT_CATEGORY_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_PRODUCT_CATEGORY_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_QTY_CONV_FACTOR",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "FP_RETAIL_QTY_CONV_FACTOR",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "FP_RETAIL_ACTIVE_STATUS_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FP_RETAIL_ACTIVE_STATUS_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NATIONAL_CATEGORY_MANAGER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "NATIONAL_CATEGORY_MANAGER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "STATE_CATEGORY_MANAGER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "STATE_CATEGORY_MANAGER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PDM_CATEGORY_MANAGER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PDM_CATEGORY_MANAGER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTIVE_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ACTIVE_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UPSERT_FLAG",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UPSERT_FLAG",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "HASH_KEY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HASH_KEY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CDS_ITEM_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CDS_ITEM_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROD_MAT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROD_MAT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROD_MAT_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROD_MAT_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSUMER_UNIT_QTY",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CONSUMER_UNIT_QTY",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOT_AREA",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOT_AREA",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_STORAGE_TYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_STORAGE_TYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_SPLIT_CATEGORY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDER_SPLIT_CATEGORY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONTRACT_BOTTLER_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CONTRACT_BOTTLER_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_CDS_LEVY_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SUPPLIER_CDS_LEVY_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "INNER_GTIN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INNER_GTIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OUTER_GTIN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OUTER_GTIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UNIT_SHAPE_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UNIT_SHAPE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DUTY_COUNTRY_OF_ORIGIN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DUTY_COUNTRY_OF_ORIGIN",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GRAPE_VARIETY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "GRAPE_VARIETY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALCOHOL_STRENGTH_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALCOHOL_STRENGTH_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TAX_CD_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TAX_CD_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_TI",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SUPPLIER_TI",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_HI",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SUPPLIER_HI",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "DELETION_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DELETION_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DISCONTINUED_DATE",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DISCONTINUED_DATE",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CODE_DATED_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CODE_DATED_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COOL_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COOL_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COOL_CODE_LEVEL",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COOL_CODE_LEVEL",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AUSTRALIAN_MADE_AND_GROWN_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "AUSTRALIAN_MADE_AND_GROWN_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FOOD_NON_FOOD_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FOOD_NON_FOOD_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DESPATCH_LIMIT_DAYS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "DESPATCH_LIMIT_DAYS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RECEIVING_LIMIT_DAYS",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RECEIVING_LIMIT_DAYS",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "MARKET_COST_PER_RETAILER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "MARKET_COST_PER_RETAILER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STANDARD_COST_PER_RETAILER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STANDARD_COST_PER_RETAILER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "NEW_LINE_BASE_SRP",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "NEW_LINE_BASE_SRP",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STRATA_AMOUNT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STRATA_AMOUNT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "TEMPORARY_PRODUCT_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEMPORARY_PRODUCT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FINAL_PRODUCT_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FINAL_PRODUCT_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TEMPORARY_PRODUCT_FLAG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "TEMPORARY_PRODUCT_FLAG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMMON_SRP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMMON_SRP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UNIT_OF_MEASURE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UNIT_OF_MEASURE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_PALLET",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_PALLET",
+									"type": "Single"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_DIM_PRODUCT",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_STG_HANA_DIM_PRODUCT",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_DIM_FULL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

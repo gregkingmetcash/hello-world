@@ -1,0 +1,176 @@
+{
+	"name": "p_BW_AZURE_EDW_DIM_REBATE",
+	"properties": {
+		"description": "Copy Rebate Attributes to Azure",
+		"activities": [
+			{
+				"name": "Copy_xrc",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MOHUB_REB"
+					},
+					{
+						"name": "Destination",
+						"value": "EDW.DIM_REBATE"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SapOpenHubSource",
+						"excludeLastRequest": false
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OHREQUID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "REQUEST_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DATAPAKID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DATAPAK_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "RECORD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "RECORD_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MRCOD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MRCLS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_CLASS",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MITYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "REBATE_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MISSTR",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INCOME_STREAM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHRT_ACCTS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHART_OF_ACCOUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MGLACC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SAPGL_ACCOUNT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPEACC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PEGL_ACCOUNT",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_BW_DIM_REBATE",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDW_DIM_REBATE",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/BW_TO_SYNAPSE"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

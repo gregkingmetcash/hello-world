@@ -1,0 +1,146 @@
+{
+	"name": "d_AZURE_SYN_EDW_FCT_PURCHASES_IBS",
+	"properties": {
+		"description": "BW IBS PURCHASES Facts",
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "REQUEST_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DATAPAK_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RECORD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BUSINESS_FUNCTION",
+				"type": "char"
+			},
+			{
+				"name": "PILLAR_CODE",
+				"type": "char"
+			},
+			{
+				"name": "STATE_CODE",
+				"type": "char"
+			},
+			{
+				"name": "BRANCH_NO",
+				"type": "char"
+			},
+			{
+				"name": "SA_CODE",
+				"type": "char"
+			},
+			{
+				"name": "VENDORACCOUNT_GROUP",
+				"type": "char"
+			},
+			{
+				"name": "SUPPLIER_TYPE",
+				"type": "char"
+			},
+			{
+				"name": "SEGMENT_HOT",
+				"type": "char"
+			},
+			{
+				"name": "SEGMENT_TM",
+				"type": "char"
+			},
+			{
+				"name": "CATEGORY_MANAGER_CODE",
+				"type": "char"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CODE",
+				"type": "char"
+			},
+			{
+				"name": "PURCHASE_SOURCE",
+				"type": "char"
+			},
+			{
+				"name": "FISCAL_DATE",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "FISCALWEEKEND_DATE",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "FISCALMONTHEND_DATE",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "FISCALMONTH_WEEKNO",
+				"type": "char"
+			},
+			{
+				"name": "FISCALYEAR_WEEKNO",
+				"type": "char"
+			},
+			{
+				"name": "COMPANY_CODE",
+				"type": "char"
+			},
+			{
+				"name": "ACCOUNT_DOC_TYPE",
+				"type": "char"
+			},
+			{
+				"name": "POST_KEY",
+				"type": "char"
+			},
+			{
+				"name": "UNIT",
+				"type": "char"
+			},
+			{
+				"name": "CURRENCY",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_AMOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "QUANTITY",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "INVOICE_AMOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "EDW",
+			"table": "FCT_PURCHASE_IBS"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

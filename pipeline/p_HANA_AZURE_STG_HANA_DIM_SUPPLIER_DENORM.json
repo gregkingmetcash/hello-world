@@ -1,0 +1,278 @@
+{
+	"name": "p_HANA_AZURE_STG_HANA_DIM_SUPPLIER_DENORM",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data_DIM_SUPPLIER_DENORM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [STG].[STG_HANA_DIM_SUPPLIER_DENORM]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SA_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPER_VENDOR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPER_VENDOR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPER_VENDOR_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPER_VENDOR_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ROYAL_SUPP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ROYAL_SUPP_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EDI_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EDI_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EDI_OPTN_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EDI_OPTN_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OUTBND_PO_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "OUTBND_PO_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PO_FUNC_ACK_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PO_FUNC_ACK_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INBND_PO_ACK_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INBND_PO_ACK_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ADV_SHP_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ADV_SHP_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INBND_INV_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INBND_INV_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ETRADE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ETRADE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXPR_RCPT_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "EXPR_RCPT_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CDS_SUP_REG_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CDS_SUP_REG_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUYER_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUYER_NUM",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_DIM_SUPPLIER_DENORM",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_STG_HANA_DIM_SUPPLIER_DENORM",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_DIM_FULL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

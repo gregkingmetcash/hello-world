@@ -1,0 +1,346 @@
+{
+	"name": "p_HANA_AZURE_EDL_HANA_FCT_ALLOWANCE_TYPE_INITIAL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "CUSTOMER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_PAGE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_PAGE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_LINE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_LINE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINE_SEQUENCE_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "LINE_SEQUENCE_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDER_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTER_BRANCH_TYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTER_BRANCH_TYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALLOWANCE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALLOWANCE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALLOWANCE_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALLOWANCE_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ALLOWANCE_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ALLOWANCE_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_ALLOWANCE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CUSTOMER_ALLOWANCE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "VENDOR_ALLOWANCE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "VENDOR_ALLOWANCE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CUSTOMER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRODUCT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERNAL_SALES_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERNAL_SALES_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTRACT_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "EXTRACT_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_AZURE_FCT_ALLOWANCE_TYPE_INITIAL_V",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDL_HANA_FCT_ALLOWANCE_TYPE",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_FCT_INITIAL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

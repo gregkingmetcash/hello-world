@@ -1,0 +1,566 @@
+{
+	"name": "d_AZURE_SYN_STG_HANA_FCT_SALES_INVOICE_LINE_ITEM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "CREATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "INVOICE_PRICING_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "UPDATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "DATE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "BANNER_GROUP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "EXTRACT_DAY_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "FULFILLMENT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "FULFILLMENT_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "INTER_BRANCH_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "INVOICE_LINE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "INVOICE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "INVOICE_PAGE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "INVOICE_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "ITEM_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "LINE_SEQUENCE_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "ORDER_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "ORDER_ORIGIN_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "ORDER_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "ORIGINAL_ORDER_TYP",
+				"type": "varchar"
+			},
+			{
+				"name": "ORIGINAL_PRODUCT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PARCEL_BUY_GROUP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PK_HASH_SK",
+				"type": "varchar"
+			},
+			{
+				"name": "PROMOTION_PRICE_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "QDA_BONUS_STOCK_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "QDA_LEVEL_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "SRC_FULFILLMENT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SUBSTITUE_PRODUCT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "UNDERBOND_SALE_INVOICE_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "UPDATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "UPDATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "BRANCH_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "CUSTOMER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PRODUCT_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUPPLIER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ACTUAL_DEAL_RATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ACTUAL_GROUP_ALLOW_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ACTUAL_PRICE_OVERRIDE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ACTUAL_PROMOTION_DEAL_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ACTUAL_UNIVERSAL_DEAL_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ADJUSTED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "AVAILABLE_DEAL_RATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BASE_CASE_RATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "BROKEN_LOAD_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CASES_SUPPLIED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CCH_VENDOR_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CIGARETTE_SLEEVE_COUNT_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CLAIM_VENDOR_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COST_CASE_RATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DELI_WEIGHT_SH_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DUTY_CASE_RATE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DUTY_FREE_COST_CASE_RATE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DUTY_FREE_COST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DUTY_PER_LT_ALCOHOL_RATE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EXTENDED_LITREAGE_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EXTENDED_MILK_LITREAGE_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EXTENDED_WEIGHT_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FUNDED_CLAIM_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GCA_CLAIMABLE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GCA_NON_CLAIMABLE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GROSS_CASE_RATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GROSS_CASE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GROSS_ORDERED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GROUP_ALLOWANCE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MARGIN_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MILK_LEVY_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "MPO_ALLOWANCE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "NETT_SUPPLIED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNITS_PER_CASE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PROMO_RETAIL_PRICE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QDA_ACTUAL_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QDA_CLAIMABLE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REBATE_RETAIL_UNIT_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "REBATE_RETAIL_UNIT_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECOVERABLE_PRICE_OVERRIDE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECOVERABLE_PROMOTION_DEAL_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RECOVERABLE_UNIVERSAL_DEAL_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RETAIL_CASE_RATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SCO_ALLOWANCE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SHORTEN_BUY_INCOME_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STANDARD_COST_CASE_RATE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STANDARD_COST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STRATA_MARKUP_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TOTAL_COST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ULLAGE_REBATE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "ULLAGE_ALLOWANCE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNFUNDED_CLAIM_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "VENDOR_PRICE_MATCH_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STANDARD_SALES_CASE_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WAREHOUSE_SALES_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WET_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WHOLESALE_PRICE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WAREHOUSE_SALES_FEE_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STANDARD_SALES_UNIT_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STANDARD_UNITS_PER_CASE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WAREHOUSE_COGS_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "INTERNAL_SALES_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "CDS_ITEM_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "PROD_MAT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PROD_MAT_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "CONSUMER_UNIT_QTY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BROKEN_CASE_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "PRICE_OVERRIDE_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PRICE_OVERRIDE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "DELETED_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "ORIG_ORDERED_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "WET_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GST_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "LUC_EXCL_GST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FISC_YEAR",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "HIST_CONTRACT_BOTTLER_FLG",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_FCT_SALES_INVOICE_LINE_ITEM"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

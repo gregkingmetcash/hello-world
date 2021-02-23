@@ -1,0 +1,27 @@
+{
+	"name": "AWSS3_RPRStoredata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AmazonS3_Metcash",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AWS_S3"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "metedwp",
+				"folderPath": "OUTBOUND/RPR/Stores"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

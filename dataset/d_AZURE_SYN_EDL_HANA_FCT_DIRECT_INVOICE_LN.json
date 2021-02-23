@@ -1,0 +1,255 @@
+{
+	"name": "d_AZURE_SYN_EDL_HANA_FCT_DIRECT_INVOICE_LN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "CUSTOMER_BRANCH_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "ORDER_BY_CUSTOMER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUPPLIER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PRODUCT_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "DIRECT_INV_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "LINE_SEQUENCE_NUM",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "SUPPLIER_INV_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_INV_DATE",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "BANNER_GROUP_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "RATABILITY_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "LIQUOR_LICENSE_TYPE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "LINE_OR_PROD_DESC",
+				"type": "varchar"
+			},
+			{
+				"name": "GL_BRANCH_ID",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "DIR_INV_MODE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_ID",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "PRODUCT_LEVY_TYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "EXT_LITRE_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QTY_SUPPLIED",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 0
+			},
+			{
+				"name": "EXTENDED_CUST_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EXT_CUST_GST_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EXT_CUST_WET_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SUPP_INVOICE_GST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "FEE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "ORD_LINE_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "CT_SALES_AMOUNT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CT_SERVICE_FEES",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CT_COGS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CT_DISCOUNT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GST_DISC_AMOUNT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DFEE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "DFEE_DESC",
+				"type": "varchar"
+			},
+			{
+				"name": "EXTRACT_DAY_NUM",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "UPDATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "UPDATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "UPDATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DIR_INV_LN_DATE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PK_HASH_SK",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_INV_INT",
+				"type": "varchar"
+			},
+			{
+				"name": "PRODUCT_CAT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "INV_LN_CREATION_DATE",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 0
+			},
+			{
+				"name": "INV_LN_CREATION_TIME",
+				"type": "decimal",
+				"precision": 6,
+				"scale": 0
+			},
+			{
+				"name": "INV_LN_SPARE_ALPHA",
+				"type": "varchar"
+			},
+			{
+				"name": "CT_SETTLMT_DISC_AMOUNT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GST_SETTLMT_DISC_AMOUNT",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "EDL",
+			"table": "HANA_FCT_DIRECT_INVOICE_LN"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,23 @@
+{
+	"name": "EIM_SYN_EDW_LNK",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=eimdevsqldw.database.windows.net;Initial Catalog=EIM_EDW;User ID=eim-dev-synapse-admin",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "EIM_KV_LNK",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "eimdevsynedwsec"
+			}
+		},
+		"connectVia": {
+			"referenceName": "EIM-DEV-IR-VNET",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

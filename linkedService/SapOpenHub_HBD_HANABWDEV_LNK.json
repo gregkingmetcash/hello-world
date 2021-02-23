@@ -1,0 +1,20 @@
+{
+	"name": "SapOpenHub_HBD_HANABWDEV_LNK",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Connect to SAPBW Hana database via open hub connector",
+		"annotations": [],
+		"type": "SapOpenHub",
+		"typeProperties": {
+			"clientId": "400",
+			"userName": "singhro",
+			"server": "eimdevhanaapp",
+			"systemNumber": "00",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0MGIyMjZhMC0zNTA2LTRmNTItYWFlZS05M2EzZTI2Y2Q0ZTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "EIM-DEV-IR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

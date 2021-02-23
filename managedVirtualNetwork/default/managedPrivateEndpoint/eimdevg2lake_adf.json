@@ -1,0 +1,7 @@
+{
+	"name": "eimdevg2lake_adf",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/023867a9-8926-4232-af0e-8037e9ae4b34/resourceGroups/EIM-DEV-RG/providers/Microsoft.Storage/storageAccounts/eimdevg2lake",
+		"groupId": "blob"
+	}
+}

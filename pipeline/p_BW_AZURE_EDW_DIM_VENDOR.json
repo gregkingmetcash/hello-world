@@ -1,0 +1,206 @@
+{
+	"name": "p_BW_AZURE_EDW_DIM_VENDOR",
+	"properties": {
+		"description": "Copy BW VENDOR Attributes to Azure",
+		"activities": [
+			{
+				"name": "Copy_xrc",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MOHUB_SU"
+					},
+					{
+						"name": "Destination",
+						"value": "EDW.DIM_VENDOR"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SapOpenHubSource",
+						"excludeLastRequest": false
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": true
+						}
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OHREQUID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "REQUEST_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DATAPAKID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DATAPAK_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "RECORD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "RECORD_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MSUPP_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPP_NME",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MVEND_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VEND_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_NAME",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ACCNT_GRPV",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VENDORACCOUNT_GROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VEND_TYPE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPILLAR_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPSTC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSVC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPERVENDOR_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MVENSP_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPERVENDOR_NAME",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_BW_DIM_VENDOR",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDW_DIM_VENDOR",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/BW_TO_SYNAPSE"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

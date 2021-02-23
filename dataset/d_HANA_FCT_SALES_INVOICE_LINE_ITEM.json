@@ -1,0 +1,20 @@
+{
+	"name": "d_HANA_FCT_SALES_INVOICE_LINE_ITEM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_HANA_NATIVE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "HANA"
+		},
+		"annotations": [],
+		"type": "SapHanaTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "EIM_EDM",
+			"table": "FCT_SALES_INVOICE_LINE_ITEM"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

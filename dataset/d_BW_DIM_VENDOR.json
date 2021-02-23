@@ -1,0 +1,20 @@
+{
+	"name": "d_BW_DIM_VENDOR",
+	"properties": {
+		"description": "BW VENDOR Attributes",
+		"linkedServiceName": {
+			"referenceName": "SapOpenHub_HBP_HANABWPROD_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BW"
+		},
+		"annotations": [],
+		"type": "SapOpenHubTable",
+		"schema": [],
+		"typeProperties": {
+			"openHubDestinationName": "MOHUB_SU"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

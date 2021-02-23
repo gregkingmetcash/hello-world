@@ -1,0 +1,458 @@
+{
+	"name": "LOAD_FCT_RETAIL_PROGRAM_TREND_SUMMARY",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_4dj",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "eim-food-business-data/RPRData/RPRTrendData/"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.STG_FCT_RETAIL_PROGRAM_TREND_SUMMARY"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.STG_FCT_RETAIL_PROGRAM_TREND_SUMMARY",
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "administration_state_cd",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "administration_state_cd",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "store_channel_cd",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "store_channel_cd",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "address_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "address_id",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "recent_store_nm",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "recent_store_nm",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "baron_dsc",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "baron_dsc",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "pmstore",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "pmstore",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "gp_err_store",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_err_store",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "store_status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "store_status",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "prom_wk_end_dt",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "prom_wk_end_dt",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sales_excl_gst_excl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sales_excl_gst_excl_tobacco_ly",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "sales_excl_gst_incl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sales_excl_gst_incl_tobacco_ly",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "sales_qty_excl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sales_qty_excl_tobacco_ly",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "sales_qty_incl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sales_qty_incl_tobacco_ly",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "basket_count_excl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "basket_count_excl_tobacco_ly",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "basket_count_incl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "basket_count_incl_tobacco_ly",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "gp_excl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_excl_tobacco_ly",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "gp_incl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_incl_tobacco_ly",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "gp_promsheet_excl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_promsheet_excl_tobacco_ly",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "gp_promsheet_incl_tobacco_ly",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_promsheet_incl_tobacco_ly",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "sales_excl_gst_excl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sales_excl_gst_excl_tobacco_ty",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "sales_excl_gst_incl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sales_excl_gst_incl_tobacco_ty",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "sales_qty_excl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sales_qty_excl_tobacco_ty",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "sales_qty_incl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sales_qty_incl_tobacco_ty",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "basket_count_excl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "basket_count_excl_tobacco_ty",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "basket_count_incl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "basket_count_incl_tobacco_ty",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "gp_excl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_excl_tobacco_ty",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "gp_incl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_incl_tobacco_ty",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "gp_promsheet_excl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_promsheet_excl_tobacco_ty",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							},
+							{
+								"source": {
+									"name": "gp_promsheet_incl_tobacco_ty",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "gp_promsheet_incl_tobacco_ty",
+									"type": "Decimal",
+									"physicalType": "money",
+									"scale": 4,
+									"precision": 19
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "EIMG2LAKE_RPR_TREND_DATA",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AZURE_SYN_STG_TRENDDATA",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "RPR DATA Pipelines/EIMG2LAKE to SYN_FOOD_ANALYT"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

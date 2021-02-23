@@ -1,0 +1,74 @@
+{
+	"name": "d_AZURE_SYN_STG_DIM_BRANCH_DENORM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "BRANCH_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "BRANCH_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "BRANCH_SHORT_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "BUS_PILLAR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BRANCH_NUM_1",
+				"type": "varchar"
+			},
+			{
+				"name": "WAREHOUSE_BRANCH_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BUS_PILLAR_CD01",
+				"type": "varchar"
+			},
+			{
+				"name": "DIVISION_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "DISTRIBUTION_CENTRE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "WAREHOUSE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CHAMBER_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "PILLAR_STATE_NM",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_DIM_BRANCH_DENORM"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

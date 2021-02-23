@@ -1,0 +1,6 @@
+{
+	"name": "EIM-DEV-IR",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

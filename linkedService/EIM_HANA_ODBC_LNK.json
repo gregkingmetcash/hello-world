@@ -1,0 +1,28 @@
+{
+	"name": "EIM_HANA_ODBC_LNK",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Odbc",
+		"typeProperties": {
+			"connectionString": {
+				"type": "SecureString",
+				"value": "**********"
+			},
+			"authenticationType": "Basic",
+			"userName": "Azure",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "EIM_KV_LNK",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "eimuathanasec"
+			}
+		},
+		"connectVia": {
+			"referenceName": "EIM-DEV-IR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

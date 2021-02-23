@@ -1,0 +1,165 @@
+{
+	"name": "d_AZURE_SYN_EDW_FCT_REBATEBXFR_WH",
+	"properties": {
+		"description": "WH Rebate Branch Transfer BXFR \nFacts",
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "REQUEST_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DATAPAK_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "RECORD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "BUSINESS_FUNCTION",
+				"type": "char"
+			},
+			{
+				"name": "PILLAR_CODE",
+				"type": "char"
+			},
+			{
+				"name": "STATE_CODE",
+				"type": "char"
+			},
+			{
+				"name": "BRANCH_NO_FROM",
+				"type": "char"
+			},
+			{
+				"name": "BRANCH_NO",
+				"type": "char"
+			},
+			{
+				"name": "SUPPLIER_CODE",
+				"type": "char"
+			},
+			{
+				"name": "SA_CODE",
+				"type": "char"
+			},
+			{
+				"name": "MSC_SECTION_CODE",
+				"type": "char"
+			},
+			{
+				"name": "MSC_CATEGORY_CODE",
+				"type": "char"
+			},
+			{
+				"name": "PRODUCT_CODE",
+				"type": "char"
+			},
+			{
+				"name": "MSC_CORPORATE_BRAND",
+				"type": "char"
+			},
+			{
+				"name": "CATEGORY_MANAGER_CODE",
+				"type": "char"
+			},
+			{
+				"name": "SEGMENT_HOT",
+				"type": "char"
+			},
+			{
+				"name": "SEGMENT_TM",
+				"type": "char"
+			},
+			{
+				"name": "PDM_CODE",
+				"type": "char"
+			},
+			{
+				"name": "INCOME_STREAM",
+				"type": "char"
+			},
+			{
+				"name": "INCOME_TYPE",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_SOURCE",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_CODE",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_NUMBER",
+				"type": "char"
+			},
+			{
+				"name": "REBATE_DESCRIPTION",
+				"type": "char"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CODE",
+				"type": "char"
+			},
+			{
+				"name": "FISCAL_DATE",
+				"type": "char"
+			},
+			{
+				"name": "FISCALWEEKEND_DATE",
+				"type": "char"
+			},
+			{
+				"name": "FISCALMONTHEND_DATE",
+				"type": "char"
+			},
+			{
+				"name": "FISCALMONTH_WEEKNO",
+				"type": "char"
+			},
+			{
+				"name": "FISCALYEAR_WEEKNO",
+				"type": "char"
+			},
+			{
+				"name": "UNIT",
+				"type": "char"
+			},
+			{
+				"name": "CURRENCY",
+				"type": "char"
+			},
+			{
+				"name": "AMOUNT",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "QUANTITY",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "EDW",
+			"table": "FCT_REBATEBXFR_WH"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

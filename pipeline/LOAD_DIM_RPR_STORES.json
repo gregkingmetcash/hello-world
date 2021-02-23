@@ -1,0 +1,168 @@
+{
+	"name": "LOAD_DIM_RPR_STORES",
+	"properties": {
+		"description": "Load RPR stores to Synapse Tables",
+		"activities": [
+			{
+				"name": "Copy_5o7",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "eim-food-business-data/RPRData/RPRStoreData/"
+					},
+					{
+						"name": "Destination",
+						"value": "dbo.STG_DIM_RETAIL_PROGRAM_STORES"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.STG_DIM_RETAIL_PROGRAM_STORES"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "address_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "address_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "State",
+									"type": "String"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Channel",
+									"type": "String"
+								},
+								"sink": {
+									"name": "channel",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Store",
+									"type": "String"
+								},
+								"sink": {
+									"name": "store",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSO",
+									"type": "String"
+								},
+								"sink": {
+									"name": "mso",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Price Match Store",
+									"type": "String"
+								},
+								"sink": {
+									"name": "price_match_store",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GP Approved Store",
+									"type": "String"
+								},
+								"sink": {
+									"name": "gp_approved_store",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Store Status",
+									"type": "String"
+								},
+								"sink": {
+									"name": "store_status",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "in_latest_RPR",
+									"type": "String"
+								},
+								"sink": {
+									"name": "in_latest_rpr",
+									"type": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "EIMG2LAKE_RPR_STORE_DATA",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AZURE_SYN_STG_STOREDATA",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "RPR DATA Pipelines/EIMG2LAKE to SYN_FOOD_ANALYT"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,11 @@
+{
+	"name": "EIM_KV_LNK",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://EIM-DEV-KV.vault.azure.net/"
+		}
+	}
+}

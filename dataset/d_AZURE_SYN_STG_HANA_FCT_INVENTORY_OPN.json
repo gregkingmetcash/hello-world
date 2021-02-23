@@ -1,0 +1,363 @@
+{
+	"name": "d_AZURE_SYN_STG_HANA_FCT_INVENTORY_OPN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "DATE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "BRANCH_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PRODUCT_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "EMPLOYEE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "SUPPLIER_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "BRANCH_NUMBER",
+				"type": "varchar"
+			},
+			{
+				"name": "FILE_CREATED_DATE",
+				"type": "date"
+			},
+			{
+				"name": "DISTRIBUTION_CENTER_CD",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 0
+			},
+			{
+				"name": "WAREHOUSE_CD",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 0
+			},
+			{
+				"name": "ACCOUNTING_DEPARTMENT",
+				"type": "varchar"
+			},
+			{
+				"name": "PRODUCT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PRODUCT_DESCRIPTION",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "STOCK_CONTROLLER_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "CODE_DATED_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "RETAILER_CASE_WEIGHT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "OUTER_WEIGHT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "INNER_WEIGHT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNIT_WEIGHT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNITS_PER_RETAILER_CASE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNITS_PER_OUTER",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNITS_PER_INNER",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "UNITS_PER_PALLET",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STORAGE_HI",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STORAGE_TI",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SUPPLIER_HI",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SUPPLIER_TI",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "STD_COST_PER_RETAIL_CASE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "KNAPP_SUGGESTED_UNITS_TOTE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "KNAPP_SUGGESTED_INNERS_TOTE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "KNAPP_SUGGESTED_OUTERS_TOTE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CYCLE_COUNT_CLASSIFICATION",
+				"type": "varchar"
+			},
+			{
+				"name": "CATCH_WEIGHT_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "RANDOM_WEIGHT_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "PRODUCT_STATUS",
+				"type": "varchar"
+			},
+			{
+				"name": "PENDING_DELETE_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "TEMPORARY_PRODUCT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "TEMPORARY_PRODUCT_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "FINAL_PRODUCT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "SLOT_LOCATION_ID",
+				"type": "varchar"
+			},
+			{
+				"name": "SLOT_UOM",
+				"type": "varchar"
+			},
+			{
+				"name": "LOCATION_USAGE_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "LICENSE_PLATE_NUMBER",
+				"type": "varchar"
+			},
+			{
+				"name": "INVENTORY_POSITION_CATG_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "INVENTORY_STATUS_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PALLET_PLACEMENT_DTIM",
+				"type": "date"
+			},
+			{
+				"name": "PALLET_CATCH_WEIGHT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PO_NUMBER",
+				"type": "varchar"
+			},
+			{
+				"name": "RECEIPT_NUMBER",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "RECEIVED_DTIM",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "RECEIVED_DT",
+				"type": "date"
+			},
+			{
+				"name": "CODE_DATE",
+				"type": "date"
+			},
+			{
+				"name": "PRODUCT_AGE_DAYS",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 0
+			},
+			{
+				"name": "TOT_STOCK_HAND_RETAILER_CASE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TOT_STOCK_HAND_OUTERS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TOT_STOCK_HAND_INNERS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TOT_STOCK_HAND_UNITS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "TOTAL_STOCK_VALUE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QTY_STOCK_ON_HAND_OUTERS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QTY_STOCK_ON_HAND_INNERS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "QTY_STOCK_ON_HAND_UNITS",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DESPATCH_LIMIT_DAYS",
+				"type": "decimal",
+				"precision": 3,
+				"scale": 0
+			},
+			{
+				"name": "LAST_DATE_TO_DESPATCH",
+				"type": "date"
+			},
+			{
+				"name": "DAYS_LEFT_TO_DESPATCH",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "BUS_PILLAR_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "BRANCH_ACTIVE_FLAG",
+				"type": "varchar"
+			},
+			{
+				"name": "PK_HASH_SK",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 0
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "date"
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "UPDATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "SHIPPER_CASE_COST_AMT",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_FCT_INVENTORY_OPN"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

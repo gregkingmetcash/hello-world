@@ -1,0 +1,198 @@
+{
+	"name": "p_HANA_AZURE_STG_HANA_DIM_BRANCH_DENORM",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data_DIM_BRANCH_DENORM",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [STG].[STG_HANA_DIM_BRANCH_DENORM]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_SHORT_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_SHORT_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_NUM_1",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_NUM_1",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WAREHOUSE_BRANCH_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WAREHOUSE_BRANCH_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BUS_PILLAR_CD01",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUS_PILLAR_CD01",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DIVISION_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DIVISION_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DISTRIBUTION_CENTRE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "DISTRIBUTION_CENTRE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WAREHOUSE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "WAREHOUSE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHAMBER_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHAMBER_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PILLAR_STATE_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_STATE_NM",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_DIM_BRANCH_DENORM",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_STG_HANA_DIM_BRANCH_DENORM",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_DIM_FULL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,1269 @@
+{
+	"name": "p_HANA_AZURE_EDL_HANA_FCT_SALES_CLAIM_LINE_ITEM",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SapHanaSource",
+						"query": "select \nCREATED_DT,\nCLAIM_DT,\nINVOICE_PRICING_DT,\nINVOICE_PRINT_DT,\nUPDATED_DT,\nDATE_SK,\nCLAIM_PRICING_IND,\nMANUAL_CLAIM_IND,\nQDA_BONUS_STOCK_IND,\nSLOW_MOVING_LINE_IND,\nPROMOTION_PRICE_IND,\nCLAIM_CATEGORY_CD,\nCLAIM_LINE_STAT_CD,\nCLAIM_STATUS_CD,\nORDER_ORIGIN_CD,\nORDER_TYP,\nPRICING_UNIT_CD,\nQDA_LEVEL_CD,\nSALE_BANNER_GRP_CD,\nSRC_CLAIM_CATEGORY_CD,\nSRC_CLAIM_LINE_STAT_CD,\nSRC_CLAIM_STATUS_IND,\nFULFILLMENT_CD,\nCLAIM_NUM,\nINVOICE_LINE_NUM,\nINVOICE_PAGE_NUM,\nCLAIM_LINE_SEQ_NUM,\nINTER_BRANCH_TYP,\nINVOICE_NUM,\nPK_HASH_SK,\nCREATED_BY,\nUPDATED_BY,\nCLAIM_CATEGORY_DSC,\nCLAIM_LINE_STATUS_DSC,\nCLAIM_STATUS_DSC,\nINVOICE_ORDER_TYPE_DSC,\nORDER_ORIGIN_DSC,\nPRICING_UNIT_DSC,\nFULFILLMENT_DSC,\nORDER_NUM,\nCREATED_BATCH_NO,\nEXTRACT_DAY_NUM,\nSOURCE_SYSTEM_CD,\nUPDATED_BATCH_NO,\nBRANCH_SK,\nCUSTOMER_SK,\nPRODUCT_SK,\nSUPPLIER_SK,\nACTUAL_CUST_LEV_DEAL_AMT,\nACTUAL_DEAL_RATE,\nACTUAL_GROUP_ALLOW_AMT,\nACTUAL_PRICE_OVERRIDE_AMT,\nACTUAL_PROMOTION_DEAL_AMT,\nACTUAL_QDA_AMT,\nACTUAL_UNIVERSAL_DEAL_AMT,\nBASE_CASE_RATE,\nBROKEN_LOAD_XMT,\nCCH_VENDOR_XMT,\nCIGARETTE_SLEEVE_COUNT_QTY,\nCLAIM_XMT,\nCLAIM_BROKEN_LOAD_XMT,\nCLAIM_NWSALE_PRICE,\nCLAIM_PRICE_AMT,\nNETT_CLAIM_QTY,\nCLAIM_VENDOR_XMT,\nCLM_NEW_PRICE_AMT,\nCOST_PRICE,\nCOST_XMT,\nCASES_CLAIM_QTY,\nSTANDARD_CASE_CLAIM_QTY,\nDUTY_FREE_COST_CASE_RATE_AMT,\nDUTY_FREE_COST_XMT,\nEXTENDED_LITREAGE_QTY,\nEXTENDED_MILK_LITREAGE_QTY,\nEXTENDED_WEIGHT_QTY,\nFUNDED_CLAIM_XMT,\nGCA_CLAIMABLE_XMT,\nGCA_NON_CLAIMABLE_XMT,\nGOODS_GST_XMT,\nGROSS_CASE_RATE,\nGROSS_CASE_XMT,\nGROSS_ORDERED_QTY,\nGROUP_ALLOWANCE_AMT,\nLIQUOR_SUBSIDY_XMT,\nLIST_PRICE_AMT,\nMARGIN_XMT,\nMILK_LEVY_XMT,\nMPO_ALLOWANCE_XMT,\nNETT_SUPPLIED_QTY,\nUNITS_PER_CASE,\nRECOVERABLE_PRICE_OVERRIDE_AMT,\nRECOVERABLE_PROMOTION_DEAL_AMT,\nRECOVERABLE_QDA_AMT,\nRECOVERABLE_UNIVERSAL_DEAL_AMT,\nCLAIM_FEE_XMT,\nSCO_ALLOWANCE_XMT,\nSHORTEN_BUY_INCOME_XMT,\nSTANDARD_COST_CASE_RATE_AMT,\nSTRATA_MARKUP_AMT,\nTOTAL_COST_XMT,\nULLAGE_REBATE_XMT,\nULLAGE_ALLOWANCE_XMT,\nUNFUNDED_CLAIM_XMT,\nVENDOR_PRICE_MATCH_XMT,\nWET_XMT,\nSTANDARD_UNITS_PER_CASE,\nSTANDARD_UNIT_CLAIM_QTY,\nCLAIMED_COGS_XMT,\nINTERNAL_SALES_IND,\nCDS_ITEM_IND,\nPROD_MAT_CD,\nPROD_MAT_NM,\nCONSUMER_UNIT_QTY,\nCDS_INCLUDE_IND,\nBROKEN_CASE_FLG,\nPRICE_OVERRIDE_AMT,\nPRICE_OVERRIDE_CD,\nGST_AMT,\nWET_AMT,\nHIST_CONTRACT_BOTTLER_FLG\n from EIM_EDM.FCT_SALES_CLAIM_LINE_ITEM where DATE_SK>=20180430",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"preCopyScript": "truncate table [ARCHIVE].[ARC_HANA_FCT_SALES_CLAIM_LINE_ITEM]",
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging"
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CLAIM_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_PRICING_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "INVOICE_PRICING_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_PRINT_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "INVOICE_PRINT_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "DATE_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_PRICING_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_PRICING_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MANUAL_CLAIM_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MANUAL_CLAIM_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "QDA_BONUS_STOCK_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "QDA_BONUS_STOCK_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SLOW_MOVING_LINE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SLOW_MOVING_LINE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROMOTION_PRICE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROMOTION_PRICE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_CATEGORY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_CATEGORY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_LINE_STAT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_LINE_STAT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_STATUS_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_STATUS_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_ORIGIN_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDER_ORIGIN_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_TYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDER_TYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRICING_UNIT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRICING_UNIT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "QDA_LEVEL_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "QDA_LEVEL_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SALE_BANNER_GRP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SALE_BANNER_GRP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SRC_CLAIM_CATEGORY_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRC_CLAIM_CATEGORY_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SRC_CLAIM_LINE_STAT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRC_CLAIM_LINE_STAT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SRC_CLAIM_STATUS_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SRC_CLAIM_STATUS_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FULFILLMENT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FULFILLMENT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_LINE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_LINE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_PAGE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_PAGE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_LINE_SEQ_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_LINE_SEQ_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INTER_BRANCH_TYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTER_BRANCH_TYP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PK_HASH_SK",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_CATEGORY_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_CATEGORY_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_LINE_STATUS_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_LINE_STATUS_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_STATUS_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CLAIM_STATUS_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INVOICE_ORDER_TYPE_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INVOICE_ORDER_TYPE_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_ORIGIN_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDER_ORIGIN_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRICING_UNIT_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRICING_UNIT_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "FULFILLMENT_DSC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FULFILLMENT_DSC",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ORDER_NUM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ORDER_NUM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTRACT_DAY_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "EXTRACT_DAY_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "BRANCH_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "CUSTOMER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "PRODUCT_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								},
+								"sink": {
+									"name": "SUPPLIER_SK",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTUAL_CUST_LEV_DEAL_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ACTUAL_CUST_LEV_DEAL_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTUAL_DEAL_RATE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ACTUAL_DEAL_RATE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTUAL_GROUP_ALLOW_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ACTUAL_GROUP_ALLOW_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTUAL_PRICE_OVERRIDE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ACTUAL_PRICE_OVERRIDE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTUAL_PROMOTION_DEAL_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ACTUAL_PROMOTION_DEAL_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTUAL_QDA_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ACTUAL_QDA_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ACTUAL_UNIVERSAL_DEAL_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ACTUAL_UNIVERSAL_DEAL_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "BASE_CASE_RATE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "BASE_CASE_RATE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKEN_LOAD_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "BROKEN_LOAD_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CCH_VENDOR_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CCH_VENDOR_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CIGARETTE_SLEEVE_COUNT_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CIGARETTE_SLEEVE_COUNT_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CLAIM_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_BROKEN_LOAD_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CLAIM_BROKEN_LOAD_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_NWSALE_PRICE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CLAIM_NWSALE_PRICE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_PRICE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CLAIM_PRICE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "NETT_CLAIM_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "NETT_CLAIM_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_VENDOR_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CLAIM_VENDOR_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLM_NEW_PRICE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CLM_NEW_PRICE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "COST_PRICE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "COST_PRICE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "COST_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "COST_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CASES_CLAIM_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CASES_CLAIM_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STANDARD_CASE_CLAIM_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STANDARD_CASE_CLAIM_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "DUTY_FREE_COST_CASE_RATE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "DUTY_FREE_COST_CASE_RATE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "DUTY_FREE_COST_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "DUTY_FREE_COST_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTENDED_LITREAGE_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXTENDED_LITREAGE_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTENDED_MILK_LITREAGE_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXTENDED_MILK_LITREAGE_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "EXTENDED_WEIGHT_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "EXTENDED_WEIGHT_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "FUNDED_CLAIM_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "FUNDED_CLAIM_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GCA_CLAIMABLE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GCA_CLAIMABLE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GCA_NON_CLAIMABLE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GCA_NON_CLAIMABLE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GOODS_GST_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GOODS_GST_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GROSS_CASE_RATE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GROSS_CASE_RATE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GROSS_CASE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GROSS_CASE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GROSS_ORDERED_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GROSS_ORDERED_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "GROUP_ALLOWANCE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GROUP_ALLOWANCE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "LIQUOR_SUBSIDY_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "LIQUOR_SUBSIDY_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "LIST_PRICE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "LIST_PRICE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "MARGIN_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "MARGIN_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "MILK_LEVY_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "MILK_LEVY_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "MPO_ALLOWANCE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "MPO_ALLOWANCE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "NETT_SUPPLIED_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "NETT_SUPPLIED_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNITS_PER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNITS_PER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RECOVERABLE_PRICE_OVERRIDE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RECOVERABLE_PRICE_OVERRIDE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RECOVERABLE_PROMOTION_DEAL_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RECOVERABLE_PROMOTION_DEAL_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RECOVERABLE_QDA_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RECOVERABLE_QDA_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "RECOVERABLE_UNIVERSAL_DEAL_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "RECOVERABLE_UNIVERSAL_DEAL_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIM_FEE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CLAIM_FEE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "SCO_ALLOWANCE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SCO_ALLOWANCE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "SHORTEN_BUY_INCOME_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "SHORTEN_BUY_INCOME_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STANDARD_COST_CASE_RATE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STANDARD_COST_CASE_RATE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STRATA_MARKUP_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STRATA_MARKUP_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "TOTAL_COST_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "TOTAL_COST_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ULLAGE_REBATE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ULLAGE_REBATE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "ULLAGE_ALLOWANCE_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "ULLAGE_ALLOWANCE_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "UNFUNDED_CLAIM_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "UNFUNDED_CLAIM_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "VENDOR_PRICE_MATCH_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "VENDOR_PRICE_MATCH_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "WET_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "WET_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STANDARD_UNITS_PER_CASE",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STANDARD_UNITS_PER_CASE",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "STANDARD_UNIT_CLAIM_QTY",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "STANDARD_UNIT_CLAIM_QTY",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "CLAIMED_COGS_XMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "CLAIMED_COGS_XMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "INTERNAL_SALES_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "INTERNAL_SALES_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CDS_ITEM_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CDS_ITEM_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROD_MAT_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROD_MAT_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PROD_MAT_NM",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PROD_MAT_NM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CONSUMER_UNIT_QTY",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "CONSUMER_UNIT_QTY",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "CDS_INCLUDE_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CDS_INCLUDE_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BROKEN_CASE_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BROKEN_CASE_FLG",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PRICE_OVERRIDE_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "PRICE_OVERRIDE_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "PRICE_OVERRIDE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PRICE_OVERRIDE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GST_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "GST_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "WET_AMT",
+									"type": "Double"
+								},
+								"sink": {
+									"name": "WET_AMT",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "HIST_CONTRACT_BOTTLER_FLG",
+									"type": "String"
+								},
+								"sink": {
+									"name": "HIST_CONTRACT_BOTTLER_FLG",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_FCT_SALES_CLAIM_LINE_ITEM",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDL_HANA_FCT_SALES_CLAIM_LINE_ITEM",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/HANA_TO_SYNAPSE_FCT_FULL"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

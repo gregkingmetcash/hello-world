@@ -1,0 +1,225 @@
+{
+	"name": "d_AZURE_SYN_STG_HANA_FCT_RETAIL_SALES_ITEM",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EDW"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "PK_HASH_SK",
+				"type": "varchar"
+			},
+			{
+				"name": "DATE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "TRANSACTION_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "STORE_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "BASKET_NUMBER",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "TILL_NUMBER",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "ITEM_SEQ_NUM",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LOYALTY_CARD_NO",
+				"type": "varchar"
+			},
+			{
+				"name": "GTIN_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "PRODUCT_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "STORE_ITEM_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_ITEM_DSC",
+				"type": "varchar"
+			},
+			{
+				"name": "SALES_QTY",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SALES_EXCL_GST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "RETAIL_PRICE_EXCL_GST_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "SALES_INCL_GST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COST_EXCL_GST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COST_INCL_GST_XMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GROSS_PROFIT_EXCL_GST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GROSS_PROFIT_INCL_GST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "COST_EXCL_GST_NORMALIZED",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "PROMOTION_IND",
+				"type": "varchar"
+			},
+			{
+				"name": "REC_HASH_KEY",
+				"type": "varchar"
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BATCH_NO",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "UPDATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "UPDATED_BATCH_NO",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "UPDATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "SOURCE_SYSTEM_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "FISC_YEARPERIOD",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "PRICE_MATCH_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "PM_PROGRAME_SK",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "RETAIL_PRICE_INCL_GST_AMT",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "GST_RATE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DQ_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "PRICE_COMPLIANCE_FLG",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_DEPARTMENT_CD",
+				"type": "varchar"
+			},
+			{
+				"name": "STORE_DEPARTMENT_NM",
+				"type": "varchar"
+			},
+			{
+				"name": "PM_RETAIL_PRICE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "DISC_AMT_EXCL_GST",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EARN_POINTS",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "STORE_EXTRACT_ID",
+				"type": "bigint",
+				"precision": 19
+			}
+		],
+		"typeProperties": {
+			"schema": "STG",
+			"table": "STG_HANA_FCT_RETAIL_SALES_ITEM"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

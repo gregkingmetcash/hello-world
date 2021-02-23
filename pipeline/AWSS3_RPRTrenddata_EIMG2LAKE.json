@@ -1,0 +1,82 @@
+{
+	"name": "AWSS3_RPRTrenddata_EIMG2LAKE",
+	"properties": {
+		"description": "Copy all files from S3 to EIMG2LAKE",
+		"activities": [
+			{
+				"name": "Copy_am3",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "metedwp/OUTBOUND/RPR/Trenddata/"
+					},
+					{
+						"name": "Destination",
+						"value": "eim-food-business-data/RPRData/RPRTrendData/"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "src_filename",
+								"value": "$$FILEPATH"
+							}
+						],
+						"storeSettings": {
+							"type": "AmazonS3ReadSettings",
+							"maxConcurrentConnections": 2,
+							"recursive": true,
+							"wildcardFileName": "*"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false
+				},
+				"inputs": [
+					{
+						"referenceName": "AWSS3_RPRTrenddata",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "EIMG2LAKE_RPRTrenddata",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "RPR DATA Pipelines/AWS_S3 to EIMG2LAKE"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:24Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

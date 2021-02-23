@@ -1,0 +1,83 @@
+{
+	"name": "d_AZURE_SYN_EXT_TM1_MANUAL_SUPPLIER",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EXT"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "SOURCE_VERSION",
+				"type": "varchar"
+			},
+			{
+				"name": "WEEK_DATE_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "REBATE_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "BRANCH_NUM",
+				"type": "varchar"
+			},
+			{
+				"name": "INCOME_SOURCE",
+				"type": "varchar"
+			},
+			{
+				"name": "PLCD_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "SUPPLIER_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "CAT_MGR_CODE",
+				"type": "varchar"
+			},
+			{
+				"name": "MEASURE_NAME",
+				"type": "varchar"
+			},
+			{
+				"name": "MEASURE_VALUE",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "CREATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "CREATED_BY",
+				"type": "varchar"
+			},
+			{
+				"name": "UPDATED_DT",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "UPDATED_BY",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "EXT",
+			"table": "TM1_Manual_Supplier"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

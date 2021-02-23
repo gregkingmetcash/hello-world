@@ -1,0 +1,360 @@
+{
+	"name": "p_BW_AZURE_EDW_FCT_PURCHASE_IBS",
+	"properties": {
+		"description": "BW IBS PURCHASES",
+		"activities": [
+			{
+				"name": "Copy_xrc",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "MOHUB_IB1"
+					},
+					{
+						"name": "Destination",
+						"value": "EDW.FCT_PURCHASE_IBS"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "SapOpenHubSource",
+						"excludeLastRequest": false
+					},
+					"sink": {
+						"type": "SqlDWSink",
+						"maxConcurrentConnections": 5,
+						"allowPolyBase": true,
+						"polyBaseSettings": {
+							"rejectValue": 0,
+							"rejectType": "value",
+							"useTypeDefault": false
+						},
+						"disableMetricsCollection": false
+					},
+					"enableStaging": true,
+					"stagingSettings": {
+						"linkedServiceName": {
+							"referenceName": "EIM_STORAGE_BLOB_LNK",
+							"type": "LinkedServiceReference"
+						},
+						"path": "eim-temp-staging",
+						"enableCompression": true
+					},
+					"parallelCopies": 5,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "OHREQUID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "REQUEST_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "DATAPAKID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "DATAPAK_ID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "RECORD",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "RECORD",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "MBFUN",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BUSINESS_FUNCTION",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPILLAR_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PILLAR_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPSTATE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "STATE_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MBNUM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "BRANCH_NO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MVEND_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SA_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ACCNT_GRPV",
+									"type": "String"
+								},
+								"sink": {
+									"name": "VENDORACCOUNT_GROUP",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSNY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSEGGM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SEGMENT_HOT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSEGHM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SEGMENT_TM",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPCM_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CATEGORY_MANAGER_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MSOURCE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MPSRC",
+									"type": "String"
+								},
+								"sink": {
+									"name": "PURCHASE_SOURCE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MFDATE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCAL_DATE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "MDATE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALWEEKEND_DATE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "MFMDTE_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALMONTHEND_DATE",
+									"type": "Int64"
+								}
+							},
+							{
+								"source": {
+									"name": "MFDTEMN_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALMONTH_WEEKNO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MFDTEYN_E",
+									"type": "String"
+								},
+								"sink": {
+									"name": "FISCALYEAR_WEEKNO",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COMP_CODE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "COMPANY_CODE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AC_DOC_TYP",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ACCOUNT_DOC_TYPE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "POST_KEY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "POST_KEY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UNIT",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UNIT",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CURRENCY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CURRENCY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AMOUNT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "REBATE_AMOUNT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "QUANTITY",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "QUANTITY",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "AMOUNT_A",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "INVOICE_AMOUNT",
+									"type": "Decimal"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_BW_FCT_PURCHASES_IBS",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_EDW_FCT_PURCHASES_IBS",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW/BW_TO_SYNAPSE"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-16T23:12:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

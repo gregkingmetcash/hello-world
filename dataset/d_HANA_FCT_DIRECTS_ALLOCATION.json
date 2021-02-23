@@ -1,0 +1,20 @@
+{
+	"name": "d_HANA_FCT_DIRECTS_ALLOCATION",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_HANA_NATIVE",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "HANA"
+		},
+		"annotations": [],
+		"type": "SapHanaTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "EIM_EDM",
+			"table": "FCT_DIRECTS_ALLOCATION"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,20 @@
+{
+	"name": "d_AZURE_SYN_EXT_TM1_MANUAL_REBATE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_SYN_EDW_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_EXT"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "EXT",
+			"table": "TM1_Manual_Rebate_File"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

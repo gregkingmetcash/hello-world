@@ -1,0 +1,239 @@
+{
+	"name": "p_HANA_AZURE_STG_DIM_CHANNEL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OdbcSource",
+						"additionalColumns": [
+							{
+								"name": "AZURE_CREATED_DT",
+								"value": {
+									"value": "@convertFromUtc(utcnow(),'AUS Eastern Standard Time')",
+									"type": "Expression"
+								}
+							},
+							{
+								"name": "AZURE_CREATED_BY",
+								"value": {
+									"value": "@pipeline().Pipeline",
+									"type": "Expression"
+								}
+							}
+						],
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "SqlDWSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "CHANNEL_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHANNEL_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHANNEL_TYPE_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHANNEL_TYPE_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHAIN_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHAIN_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "SUPPLIER_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MAP_INFO_STYLE",
+									"type": "String"
+								},
+								"sink": {
+									"name": "MAP_INFO_STYLE",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CHANNEL_REF_NUM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CHANNEL_REF_NUM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CHANNEL_REF_STORE_COUNT",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CHANNEL_REF_STORE_COUNT",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CHANNEL_REPORT_GRP_CD",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CHANNEL_REPORT_GRP_CD",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "METCASH_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "METCASH_IND",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "CREATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "UPDATED_BATCH_NO",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "CREATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "UPDATED_DT",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "CREATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "CREATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								},
+								"sink": {
+									"name": "UPDATED_BY",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SOURCE_SYSTEM",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "SOURCE_SYSTEM",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "IRI_IND",
+									"type": "String"
+								},
+								"sink": {
+									"name": "IRI_IND",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "d_HANA_ODBC_DIM_CHANNEL",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "d_AZURE_SYN_STG_DIM_CHANNEL",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "EIM_SYN_EDW_DIMENSIONS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-11-18T03:10:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

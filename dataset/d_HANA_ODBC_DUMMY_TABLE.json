@@ -1,0 +1,19 @@
+{
+	"name": "d_HANA_ODBC_DUMMY_TABLE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_HANA_ODBC_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "HANA"
+		},
+		"annotations": [],
+		"type": "OdbcTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "\"EIM_EDM\".\"DUMMY_TABLE\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

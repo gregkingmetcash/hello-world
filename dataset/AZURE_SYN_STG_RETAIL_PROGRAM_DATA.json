@@ -1,0 +1,136 @@
+{
+	"name": "AZURE_SYN_STG_RETAIL_PROGRAM_DATA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_EIM_FOOD_ANALYT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_FOOD_ANALYT"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "tyorly",
+				"type": "nvarchar"
+			},
+			{
+				"name": "administration_state_cd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "store_channel_cd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "baron_dsc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "address_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "recent_store_nm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "pmstore",
+				"type": "nvarchar"
+			},
+			{
+				"name": "gp_err_store",
+				"type": "nvarchar"
+			},
+			{
+				"name": "store_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "program1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "program2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "finance_department_nm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "exclnrc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_cd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "product_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "msc_dept_nm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "msc_section_nm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "msc_category_nm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "msc_commodity_nm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "msc_sub_comm_nm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "prom_wk_end_dt",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sales_excl_gst",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "sales_qty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp_norm",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp_promsheet",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "STG_FCT_RETAIL_PROGRAM_SUMMARY"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

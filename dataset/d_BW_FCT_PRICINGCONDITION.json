@@ -1,0 +1,20 @@
+{
+	"name": "d_BW_FCT_PRICINGCONDITION",
+	"properties": {
+		"description": "BW PRICING CONDITION Facts",
+		"linkedServiceName": {
+			"referenceName": "SapOpenHub_HBP_HANABWPROD_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "BW"
+		},
+		"annotations": [],
+		"type": "SapOpenHubTable",
+		"schema": [],
+		"typeProperties": {
+			"openHubDestinationName": "MOHUB_SP1"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

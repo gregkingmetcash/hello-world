@@ -1,0 +1,174 @@
+{
+	"name": "AZURE_SYN_STG_TRENDDATA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_EIM_FOOD_ANALYT",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "AZURE_SYN_FOOD_ANALYT"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "administration_state_cd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "store_channel_cd",
+				"type": "nvarchar"
+			},
+			{
+				"name": "address_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "recent_store_nm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "baron_dsc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "pmstore",
+				"type": "nvarchar"
+			},
+			{
+				"name": "gp_err_store",
+				"type": "nvarchar"
+			},
+			{
+				"name": "store_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "prom_wk_end_dt",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sales_excl_gst_excl_tobacco_ly",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "sales_excl_gst_incl_tobacco_ly",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "sales_qty_excl_tobacco_ly",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "sales_qty_incl_tobacco_ly",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "basket_count_excl_tobacco_ly",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "basket_count_incl_tobacco_ly",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "gp_excl_tobacco_ly",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp_incl_tobacco_ly",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp_promsheet_excl_tobacco_ly",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp_promsheet_incl_tobacco_ly",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "sales_excl_gst_excl_tobacco_ty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "sales_excl_gst_incl_tobacco_ty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "sales_qty_excl_tobacco_ty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "sales_qty_incl_tobacco_ty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "basket_count_excl_tobacco_ty",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "basket_count_incl_tobacco_ty",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "gp_excl_tobacco_ty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp_incl_tobacco_ty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp_promsheet_excl_tobacco_ty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			},
+			{
+				"name": "gp_promsheet_incl_tobacco_ty",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "STG_FCT_RETAIL_PROGRAM_TREND_SUMMARY"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
