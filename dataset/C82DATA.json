@@ -1,0 +1,24 @@
+{
+	"name": "C82DATA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EIM_STORAGE_BLOB_LNK",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "C82994210218.TXT",
+				"folderPath": "PE_REPORTS/DATA/C82/",
+				"container": "eim-food-int-files"
+			},
+			"columnDelimiter": "|",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
